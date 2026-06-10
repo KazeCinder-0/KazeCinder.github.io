@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TechBlog — 探索技术，记录成长。分享前端开发、后端架构和工程实践的技术博客。">
+  <meta name="keywords" content="技术博客,前端开发,TypeScript,React,编程教程">
+  <meta name="author" content="King Cobra">
+  <meta property="og:title" content="TechBlog - 探索技术，记录成长">
+  <meta property="og:description" content="分享前端开发、后端架构和工程实践的技术博客。">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>TechBlog — 探索技术，记录成长</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%233b82f6'/><stop offset='100%' stop-color='%2310b981'/></linearGradient></defs><rect width='64' height='64' rx='14' fill='url(%23g)'/><text x='32' y='42' text-anchor='middle' fill='white' font-family='system-ui' font-size='28' font-weight='bold'><</text></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', '"PingFang SC"', '"Microsoft YaHei"', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['"Fira Code"', '"Cascadia Code"', 'Consolas', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    html { scroll-behavior: smooth; }
+    body { -webkit-font-smoothing: antialiased; }
+    ::selection { background-color: #bfdbfe; color: #1e3a8a; }
+    * { outline-offset: 2px; }
+    *:focus-visible { outline: 2px solid #3b82f6; border-radius: 2px; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+    }
+    @keyframes fadeInUp { from { opacity:0; transform: translateY(16px); } to { opacity:1; transform: translateY(0); } }
+    .animate-fade-in-up { animation: fadeInUp 0.5s ease-out; }
+    .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    @media print { nav, footer, button { display: none !important; } body { background: white; } }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans min-h-[100dvh] flex flex-col">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg">跳转到主要内容</a>
+
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200" role="navigation" aria-label="主导航">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="#/" class="flex items-center gap-2 group" aria-label="TechBlog 首页">
+          <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+            <span class="text-white font-bold text-sm text-xs">&lt;/&gt;</span>
+          </div>
+          <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent">TechBlog</span>
+        </a>
+        <div class="hidden md:flex items-center gap-1" role="menubar">
+          <a href="#/" class="px-4 py-2 rounded-lg text-sm font-medium transition-colors text-blue-700 bg-blue-50" role="menuitem" data-nav="home">首页</a>
+          <a href="#/about" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors" role="menuitem" data-nav="about">关于</a>
+        </div>
+        <button class="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors" aria-label="打开菜单" aria-expanded="false" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+      <div id="mobile-menu" class="hidden md:hidden pb-4 border-t border-gray-100 mt-2" role="menu">
+        <div class="flex flex-col gap-1 pt-3">
+          <a href="#/" class="px-4 py-2 rounded-lg text-sm font-medium bg-blue-50 text-blue-700" role="menuitem">首页</a>
+          <a href="#/about" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-100" role="menuitem">关于</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main-content" class="flex-1 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full" role="main" aria-label="博客内容"></main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-200 mt-16" role="contentinfo">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-lg flex items-center justify-center">
+              <span class="text-white font-bold text-sm text-xs">&lt;/&gt;</span>
+            </div>
+            <span class="text-lg font-bold text-gray-900">TechBlog</span>
+          </div>
+          <p class="text-sm text-gray-500 leading-relaxed">探索技术，记录成长。一个关于前端、后端和工程实践的技术博客。</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-4">快速导航</h3>
+          <ul class="space-y-2">
+            <li><a href="#/" class="text-sm text-gray-500 hover:text-blue-600 transition-colors">首页</a></li>
+            <li><a href="#/about" class="text-sm text-gray-500 hover:text-blue-600 transition-colors">关于</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-4">技术栈</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded">HTML5</span>
+            <span class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded">Tailwind CSS</span>
+            <span class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded">Vanilla JS</span>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-200 mt-8 pt-8 text-center sm:text-left">
+        <p class="text-sm text-gray-400">&copy; 2026 King Cobra (TechBlog). All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ===== Blog Data =====
+    const POSTS = [
+      { id: '1', title: 'TypeScript 5.0 新特性全面解析', excerpt: '深入探索 TypeScript 5.0 带来的装饰器、声明文件改进以及性能优化，帮助你写出更类型安全的代码。', date: '2026-06-08', tags: ['TypeScript', '前端', '编程'], author: 'King Cobra', readTime: '8 分钟', cover: '📘' },
+      { id: '2', title: 'React Server Components 深入实践', excerpt: '从零开始理解 React Server Components 的核心理念，掌握在服务端和客户端之间合理分配组件渲染的策略。', date: '2026-06-05', tags: ['React', '前端', '架构'], author: 'King Cobra', readTime: '12 分钟', cover: '⚛️' },
+      { id: '3', title: 'Tailwind CSS v4 迁移指南', excerpt: 'Tailwind CSS v4 带来了重大架构变更，从 CSS-first 配置到性能提升，一文带你完成迁移。', date: '2026-06-02', tags: ['Tailwind', 'CSS', '前端'], author: 'King Cobra', readTime: '6 分钟', cover: '🎨' },
+      { id: '4', title: 'Deno 与 Bun 性能对比评测', excerpt: '分别使用 Deno 和 Bun 构建同一个 REST API 服务，从启动时间、内存占用、请求吞吐量三个维度进行全方位对比。', date: '2026-05-28', tags: ['后端', '性能', 'Node.js'], author: 'King Cobra', readTime: '10 分钟', cover: '⚡' },
+      { id: '5', title: 'Web 性能优化：从 3 秒到 300 毫秒', excerpt: '本文记录了一次真实项目的性能优化历程，从 Lighthouse 评分 45 到 98 的完整优化思路和实操步骤。', date: '2026-05-25', tags: ['性能', '前端', '优化'], author: 'King Cobra', readTime: '15 分钟', cover: '🚀' },
+      { id: '6', title: '前端开发者必备：Docker 入门与实践', excerpt: '不需要成为运维专家，也能用好 Docker。本文面向前端开发者，用最简单的案例带你搭建本地开发环境。', date: '2026-05-20', tags: ['Docker', 'DevOps', '工具'], author: 'King Cobra', readTime: '7 分钟', cover: '🐳' },
+    ];
+
+    const ARTICLES = {
+      '1': {
+        content: `
+          <h1 class="text-3xl md:text-4xl font-bold mb-4 tracking-tight">TypeScript 5.0 新特性全面解析</h1>
+          <div class="flex flex-wrap items-center gap-3 mb-8 text-sm text-gray-500">
+            <span>2026-06-08</span><span>·</span><span>8 分钟阅读</span><span>·</span><span>By 博主</span>
+          </div>
+          <p class="text-lg text-gray-500 mb-8 leading-relaxed">深入探索 TypeScript 5.0 带来的装饰器、声明文件改进以及性能优化，帮助你写出更类型安全的代码。</p>
+          <h2>为什么重要？</h2>
+          <p>TypeScript 5.0 是近年来最重要的版本更新之一。它带来了诸多令人期待的新特性，包括装饰器、声明文件改进以及显著的性能优化。</p>
+          <h2>装饰器（Decorators）</h2>
+          <p>TypeScript 5.0 终于将装饰器从实验性功能正式纳入语言规范。</p>
+          <pre class="bg-gray-900 text-gray-100 rounded-lg p-4 overflow-x-auto my-4 text-sm"><code>// 方法装饰器示例
+function timed(target, propertyKey, descriptor) {
+  const original = descriptor.value;
+  descriptor.value = function (...args) {
+    const start = Date.now();
+    const result = original.apply(this, args);
+    console.log(\`\${String(propertyKey)} took \${Date.now() - start}ms\`);
+    return result;
+  };
+  return descriptor;
+}</code></pre>
+          <h2>verbatimModuleSyntax</h2>
+          <p>提供了更精细的模块导入控制：</p>
+          <pre class="bg-gray-900 text-gray-100 rounded-lg p-4 overflow-x-auto my-4 text-sm"><code>// 使用 import type 只导入类型
+import type { SomeType } from './module';
+import { someValue } from './module';</code></pre>
+          <h2>性能提升</h2>
+          <table class="w-full border-collapse my-4">
+            <thead><tr class="bg-gray-50"><th class="border p-2 text-left">项目</th><th class="border p-2 text-left">TS 4.9</th><th class="border p-2 text-left">TS 5.0</th><th class="border p-2 text-left">提升</th></tr></thead>
+            <tbody>
+              <tr><td class="border p-2">增量编译</td><td class="border p-2">12.3s</td><td class="border p-2">7.4s</td><td class="border p-2 text-green-600 font-medium">~40%</td></tr>
+              <tr><td class="border p-2">冷启动</td><td class="border p-2">8.7s</td><td class="border p-2">5.2s</td><td class="border p-2 text-green-600 font-medium">~40%</td></tr>
+              <tr><td class="border p-2">内存占用</td><td class="border p-2">512MB</td><td class="border p-2">410MB</td><td class="border p-2 text-green-600 font-medium">~20%</td></tr>
+            </tbody>
+          </table>
+          <blockquote class="border-l-4 border-blue-500 bg-blue-50 p-4 my-6 not-italic"><p>强烈建议所有 TypeScript 项目升级到最新版本！</p></blockquote>
+        `
+      },
+      '2': {
+        content: `
+          <h1 class="text-3xl md:text-4xl font-bold mb-4 tracking-tight">React Server Components 深入实践</h1>
+          <div class="flex flex-wrap items-center gap-3 mb-8 text-sm text-gray-500">
+            <span>2026-06-05</span><span>·</span><span>12 分钟阅读</span><span>·</span><span>By 博主</span>
+          </div>
+          <p class="text-lg text-gray-500 mb-8 leading-relaxed">从零开始理解 React Server Components 的核心理念，掌握在服务端和客户端之间合理分配组件渲染的策略。</p>
+          <h2>什么是 RSC？</h2>
+          <p>React Server Components (RSC) 是 React 架构的重大革新。它允许你在服务器上运行组件，只将必要的 HTML 和最小化的 JavaScript 发送到客户端。</p>
+          <h2>核心优势</h2>
+          <ul class="list-disc ml-6 my-4 space-y-2">
+            <li>零 bundle 体积 — 服务器组件不会被发送到客户端</li>
+            <li>直接访问后端资源 — 数据库、文件系统</li>
+            <li>自动代码分割 — 客户端和服务器组件之间</li>
+          </ul>
+          <pre class="bg-gray-900 text-gray-100 rounded-lg p-4 overflow-x-auto my-4 text-sm"><code>// 服务器组件 - 默认就是
+async function BlogPost({ id }) {
+  const post = await db.post.findUnique({ where: { id } });
+  return (
+    &lt;article&gt;
+      &lt;h1&gt;{post.title}&lt;/h1&gt;
+      &lt;Content data={post.content} /&gt;
+    &lt;/article&gt;
+  );
+}</code></pre>
+          <h2>混合渲染策略</h2>
+          <p>通过在组件树中合理混合使用服务器组件和客户端组件，可以实现最佳的渲染性能。</p>
+          <blockquote class="border-l-4 border-blue-500 bg-blue-50 p-4 my-6 not-italic"><p>理解 RSC 的关键：服务器组件是默认，客户端组件需要 "use client" 标记。</p></blockquote>
+        `
+      },
+      '3': {
+        content: `
+          <h1 class="text-3xl md:text-4xl font-bold mb-4 tracking-tight">Tailwind CSS v4 迁移指南</h1>
+          <div class="flex flex-wrap items-center gap-3 mb-8 text-sm text-gray-500">
+            <span>2026-06-02</span><span>·</span><span>6 分钟阅读</span><span>·</span><span>By 博主</span>
+          </div>
+          <p class="text-lg text-gray-500 mb-8 leading-relaxed">Tailwind CSS v4 带来了重大架构变更，从 CSS-first 配置到性能提升，一文带你完成迁移。</p>
+          <h2>什么是 v4？</h2>
+          <p>Tailwind CSS v4 是 CSS-first 的重大转折点。不再需要 JavaScript 配置文件，所有配置都在 CSS 中完成。</p>
+          <h2>主要变更</h2>
+          <table class="w-full border-collapse my-4">
+            <thead><tr class="bg-gray-50"><th class="border p-2 text-left">v3</th><th class="border p-2 text-left">v4</th></tr></thead>
+            <tbody>
+              <tr><td class="border p-2">tailwind.config.js</td><td class="border p-2">@theme 在 CSS 中</td></tr>
+              <tr><td class="border p-2">PostCSS 插件</td><td class="border p-2">原生 CSS 解析</td></tr>
+              <tr><td class="border p-2">~400ms 启动</td><td class="border p-2">&lt;50ms 启动</td></tr>
+            </tbody>
+          </table>
+          <pre class="bg-gray-900 text-gray-100 rounded-lg p-4 overflow-x-auto my-4 text-sm"><code>/* v4 配置方式 - CSS 中 */
+@theme {
+  --color-primary: #3b82f6;
+  --color-accent: #10b981;
+  --font-sans: 'Inter', system-ui, sans-serif;
+}</code></pre>
+          <blockquote class="border-l-4 border-blue-500 bg-blue-50 p-4 my-6 not-italic"><p>v4 的启动速度快了 8 倍，这对大型项目来说是革命性的提升。</p></blockquote>
+        `
+      },
+      '4': {
+        content: `
+          <h1 class="text-3xl md:text-4xl font-bold mb-4 tracking-tight">Deno 与 Bun 性能对比评测</h1>
+          <div class="flex flex-wrap items-center gap-3 mb-8 text-sm text-gray-500">
+            <span>2026-05-28</span><span>·</span><span>10 分钟阅读</span><span>·</span><span>By 博主</span>
+          </div>
+          <p class="text-lg text-gray-500 mb-8 leading-relaxed">分别使用 Deno 和 Bun 构建同一个 REST API 服务，从启动时间、内存占用、请求吞吐量三个维度进行全方位对比。</p>
+          <h2>测试环境</h2>
+          <ul class="list-disc ml-6 my-4 space-y-2">
+            <li>CPU: Apple M3 Max, 36-core</li>
+            <li>内存: 64GB</li>
+            <li>OS: macOS Sonoma 14</li>
+          </ul>
+          <h2>测试结果</h2>
+          <table class="w-full border-collapse my-4">
+            <thead><tr class="bg-gray-50"><th class="border p-2 text-left">指标</th><th class="border p-2 text-left">Bun</th><th class="border p-2 text-left">Deno</th></tr></thead>
+            <tbody>
+              <tr><td class="border p-2">冷启动时间</td><td class="border p-2">42ms</td><td class="border p-2">185ms</td></tr>
+              <tr><td class="border p-2">内存占用</td><td class="border p-2">28MB</td><td class="border p-2">56MB</td></tr>
+              <tr><td class="border p-2">QPS</td><td class="border p-2">45,200</td><td class="border p-2">32,100</td></tr>
+            </tbody>
+          </table>
+          <blockquote class="border-l-4 border-blue-500 bg-blue-50 p-4 my-6 not-italic"><p>Bun 在性能测试中全面领先，但 Deno 的安全模型和标准库更完善。</p></blockquote>
+        `
+      },
+      '5': {
+        content: `
+          <h1 class="text-3xl md:text-4xl font-bold mb-4 tracking-tight">Web 性能优化：从 3 秒到 300 毫秒</h1>
+          <div class="flex flex-wrap items-center gap-3 mb-8 text-sm text-gray-500">
+            <span>2026-05-25</span><span>·</span><span>15 分钟阅读</span><span>·</span><span>By 博主</span>
+          </div>
+          <p class="text-lg text-gray-500 mb-8 leading-relaxed">本文记录了一次真实项目的性能优化历程，从 Lighthouse 评分 45 到 98 的完整优化思路和实操步骤。</p>
+          <h2>优化前的问题</h2>
+          <ul class="list-disc ml-6 my-4 space-y-2">
+            <li>首次渲染时间：3.2 秒</li>
+            <li>主线程阻塞：超过 5 秒</li>
+            <li>未压缩的图片资源：12MB</li>
+          </ul>
+          <h2>优化方案</h2>
+          <pre class="bg-gray-900 text-gray-100 rounded-lg p-4 overflow-x-auto my-4 text-sm"><code>// 1. 代码分割
+const Dashboard = lazy(() => import('./Dashboard'));
+
+// 2. 图片懒加载
+&lt;img loading="lazy" src="hero.webp" /&gt;
+
+// 3. 虚拟列表
+&lt;FixedSizeList
+  items={data}
+  height={600}
+  width="100%"
+/&gt;</code></pre>
+          <h2>优化结果</h2>
+          <table class="w-full border-collapse my-4">
+            <thead><tr class="bg-gray-50"><th class="border p-2 text-left">指标</th><th class="border p-2 text-left">优化前</th><th class="border p-2 text-left">优化后</th></tr></thead>
+            <tbody>
+              <tr><td class="border p-2">LCP</td><td class="border p-2">3.2s</td><td class="border p-2 text-green-600 font-medium">0.3s</td></tr>
+              <tr><td class="border p-2">FID</td><td class="border p-2">800ms</td><td class="border p-2 text-green-600 font-medium">12ms</td></tr>
+              <tr><td class="border p-2">CLS</td><td class="border p-2">0.45</td><td class="border p-2 text-green-600 font-medium">0.01</td></tr>
+              <tr><td class="border p-2">Bundle</td><td class="border p-2">2.1MB</td><td class="border p-2 text-green-600 font-medium">340KB</td></tr>
+            </tbody>
+          </table>
+          <blockquote class="border-l-4 border-blue-500 bg-blue-50 p-4 my-6 not-italic"><p>性能优化是一个持续的过程，需要结合数据和用户反馈不断迭代。</p></blockquote>
+        `
+      },
+      '6': {
+        content: `
+          <h1 class="text-3xl md:text-4xl font-bold mb-4 tracking-tight">前端开发者必备：Docker 入门与实践</h1>
+          <div class="flex flex-wrap items-center gap-3 mb-8 text-sm text-gray-500">
+            <span>2026-05-20</span><span>·</span><span>7 分钟阅读</span><span>·</span><span>By 博主</span>
+          </div>
+          <p class="text-lg text-gray-500 mb-8 leading-relaxed">不需要成为运维专家，也能用好 Docker。本文面向前端开发者，用最简单的案例带你搭建本地开发环境。</p>
+          <h2>为什么前端需要 Docker？</h2>
+          <ul class="list-disc ml-6 my-4 space-y-2">
+            <li>统一开发环境 — 告别 "在我机器上是好的"</li>
+            <li>简化 CI/CD 流程</li>
+            <li>一键部署到生产</li>
+          </ul>
+          <pre class="bg-gray-900 text-gray-100 rounded-lg p-4 overflow-x-auto my-4 text-sm"><code># Dockerfile
+FROM node:20-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+COPY . .
+RUN npm run build
+
+FROM nginx:alpine
+COPY --from=builder /app/dist /usr/share/nginx/html
+EXPOSE 80</code></pre>
+          <blockquote class="border-l-4 border-blue-500 bg-blue-50 p-4 my-6 not-italic"><p>掌握 Docker 的基本用法，是前端开发者进阶的必经之路。</p></blockquote>
+        `
+      },
+    };
+
+    // ===== Utility Functions =====
+    function getAllTags() {
+      const set = new Set();
+      POSTS.forEach(p => p.tags.forEach(t => set.add(t)));
+      return Array.from(set).sort();
+    }
+
+    function getPostsByTag(tag) {
+      return POSTS.filter(p => p.tags.includes(tag));
+    }
+
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    // ===== Render Functions =====
+    function renderPostCard(post) {
+      return `
+        <article class="card-hover bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md hover:border-gray-300 transition-all duration-300 overflow-hidden group cursor-pointer" onclick="window.location.hash='#/post/${post.id}'">
+          <div class="h-40 bg-gradient-to-br from-blue-100 to-emerald-100 flex items-center justify-center group-hover:from-blue-200 group-hover:to-emerald-200 transition-all duration-300">
+            <span class="text-5xl">${post.cover}</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">${escapeHtml(post.title)}</h3>
+            <p class="text-sm text-gray-500 mb-3 line-clamp-2">${escapeHtml(post.excerpt)}</p>
+            <div class="flex items-center justify-between">
+              <div class="flex flex-wrap gap-1">
+                ${post.tags.slice(0, 2).map(t => `<span class="text-xs px-2 py-0.5 bg-gray-100 text-gray-600 rounded">${escapeHtml(t)}</span>`).join('')}
+              </div>
+              <span class="text-xs text-gray-400">${post.date}</span>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderListCard(post) {
+      return `
+        <article class="card-hover bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md hover:border-gray-300 transition-all duration-300 p-6 group cursor-pointer" onclick="window.location.hash='#/post/${post.id}'">
+          <div class="flex flex-col sm:flex-row sm:items-start gap-4">
+            <div class="flex-1 min-w-0">
+              <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">${escapeHtml(post.title)}</h3>
+              <p class="text-gray-500 text-sm mb-3 line-clamp-2">${escapeHtml(post.excerpt)}</p>
+              <div class="flex flex-wrap items-center gap-3">
+                <div class="flex flex-wrap gap-1">
+                  ${post.tags.map(t => `<span class="text-xs px-2 py-0.5 bg-blue-50 text-blue-600 rounded cursor-pointer hover:bg-blue-100 transition-colors" onclick="event.stopPropagation(); window.location.hash='#/tag/${t}'">#${escapeHtml(t)}</span>`).join('')}
+                </div>
+                <span class="text-xs text-gray-400">${post.readTime}</span>
+                <span class="text-xs text-gray-400">${post.date}</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderTagBadges(tags, activeTag) {
+      return tags.map(t => `
+        <button class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${activeTag === t ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-blue-100 text-blue-700 hover:bg-blue-200'} cursor-pointer transition-colors duration-200" onclick="window.location.hash='#/tag/${t}'">${escapeHtml(t)}</button>
+      `).join('');
+    }
+
+    // ===== Page: Home =====
+    function renderHome(activeTag) {
+      const allTags = getAllTags();
+      const featuredPosts = POSTS.slice(0, 3);
+      const listPosts = activeTag ? getPostsByTag(activeTag) : POSTS.slice(3);
+      const isTagPage = !!activeTag;
+
+      return `
+        ${isTagPage ? `
+          <div class="mb-8">
+            <button onclick="window.location.hash='#/'" class="flex items-center gap-2 text-sm text-gray-500 hover:text-blue-600 transition-colors mb-4" aria-label="返回首页">
+              <svg class="w-4 h-4 group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+              返回
+            </button>
+            <h1 class="text-2xl font-bold mb-2">
+              <span class="text-blue-600">#${escapeHtml(activeTag)}</span>
+            </h1>
+            <p class="text-gray-500">共 <strong class="text-gray-700">${listPosts.length}</strong> 篇文章</p>
+          </div>
+        ` : ''}
+
+        ${!isTagPage ? `
+          <section class="mb-12 animate-fade-in-up">
+            <div class="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 rounded-2xl p-8 md:p-12 text-white relative overflow-hidden">
+              <div class="absolute inset-0 opacity-10">
+                <svg class="w-full h-full" viewBox="0 0 400 400"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="0.5"/></pattern></defs><rect width="400" height="400" fill="url(#grid)"/></svg>
+              </div>
+              <div class="relative z-10">
+              <h1 class="text-3xl md:text-4xl font-bold mb-4 tracking-tight">探索技术，记录成长</h1>
+              <p class="text-blue-100 text-lg max-w-2xl leading-relaxed">King Cobra 的技术博客，记录前端、后端、DevOps 的工程实践与思考。</p>
+                <div class="flex flex-wrap gap-3 mt-6">
+                  <span class="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">${POSTS.length} 篇文章</span>
+                  <span class="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">${allTags.length} 个标签</span>
+                  <span class="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">持续更新中</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="mb-8">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="text-sm font-medium text-gray-500 mr-2">筛选标签：</span>
+              <button class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 cursor-pointer transition-colors duration-200" onclick="window.location.hash='#/'">全部</button>
+              ${renderTagBadges(allTags, activeTag)}
+            </div>
+          </section>
+        ` : ''}
+
+        ${!isTagPage ? `
+          <section class="mb-12">
+            <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+              <span class="w-1 h-6 bg-blue-500 rounded-full"></span>推荐文章
+            </h2>
+            <div class="grid md:grid-cols-3 gap-6">
+              ${featuredPosts.map(renderPostCard).join('')}
+            </div>
+          </section>
+        ` : ''}
+
+        <section>
+          <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+            <span class="w-1 h-6 ${isTagPage ? 'bg-blue-500' : 'bg-emerald-500'} rounded-full"></span>
+            ${isTagPage ? '相关文章' : '最新文章'}
+          </h2>
+          <div class="space-y-4">
+            ${listPosts.length > 0 ? listPosts.map(renderListCard).join('') : '<div class="text-center py-16"><svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><p class="text-gray-500">暂无文章</p></div>'}
+          </div>
+        </section>
+      `;
+    }
+
+    // ===== Page: Post Detail =====
+    function renderPost(id) {
+      const article = ARTICLES[id];
+      const post = POSTS.find(p => p.id === id);
+      if (!article || !post) return '<div class="text-center py-16"><p class="text-gray-500">文章不存在</p><a href="#/" class="text-blue-600 hover:underline mt-4 inline-block">返回首页</a></div>';
+
+      const relatedPosts = POSTS.filter(p => p.id !== id && p.tags.some(t => post.tags.includes(t))).slice(0, 3);
+
+      return `
+        <button onclick="window.history.back()" class="flex items-center gap-2 text-sm text-gray-500 hover:text-blue-600 transition-colors mb-6" aria-label="返回上一页">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          返回
+        </button>
+
+        <article class="mb-12">
+          <div class="flex flex-wrap items-center gap-3 mb-6 text-sm text-gray-400">
+            <span>${post.date}</span><span>·</span><span>${post.readTime}</span><span>·</span><span>By ${post.author}</span>
+          </div>
+          <h1 class="text-3xl md:text-4xl font-bold mb-4 leading-tight tracking-tight">${escapeHtml(post.title)}</h1>
+          <p class="text-lg text-gray-500 mb-6 leading-relaxed">${escapeHtml(post.excerpt)}</p>
+          <div class="flex flex-wrap gap-2 mb-8">
+            ${post.tags.map(t => `<button class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700 hover:bg-blue-200 cursor-pointer transition-colors duration-200" onclick="window.location.hash='#/tag/${t}'">#${escapeHtml(t)}</button>`).join('')}
+          </div>
+          <div class="border-t border-gray-200"></div>
+        </article>
+
+        <section class="prose-custom mb-12 text-gray-700 leading-relaxed space-y-6 text-base">
+          ${article.content.replace(/<h[1-6]/g, '<h$1 class="text-2xl font-bold text-gray-900 mt-8 mb-4 tracking-tight scroll-mt-20"').replace(/<p class="text-lg/g, '<p class="mb-6"')}
+        </section>
+
+        <section class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-12">
+          <h3 class="font-bold text-gray-900 mb-4">浏览所有标签</h3>
+          <div class="flex flex-wrap gap-2">
+            ${renderTagBadges(getAllTags(), '')}
+          </div>
+        </section>
+
+        ${relatedPosts.length > 0 ? `
+          <section class="mb-12">
+            <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+              <span class="w-1 h-6 bg-blue-500 rounded-full"></span>相关文章
+            </h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              ${relatedPosts.map(p => `
+                <article class="bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md hover:border-gray-300 transition-all duration-300 p-5 cursor-pointer group" onclick="window.location.hash='#/post/${p.id}'">
+                  <h3 class="font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">${escapeHtml(p.title)}</h3>
+                  <p class="text-sm text-gray-500 line-clamp-2 mb-3">${escapeHtml(p.excerpt)}</p>
+                  <span class="text-xs text-gray-400">${p.date}</span>
+                </article>
+              `).join('')}
+            </div>
+          </section>
+        ` : ''}
+      `;
+    }
+
+    // ===== Page: About =====
+    function renderAbout() {
+      return `
+        <section class="mb-12">
+          <div class="text-center mb-10">
+            <div class="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-full flex items-center justify-center text-white text-3xl font-bold shadow-lg">博</div>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4 tracking-tight">关于这个博客</h1>
+            <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">记录学习历程，分享技术心得，与社区共同成长。</p>
+          </div>
+        </section>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="md:col-span-2 space-y-8">
+            <section class="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+              <h2 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2"><span class="w-1 h-6 bg-blue-500 rounded-full"></span>写在前面</h2>
+              <div class="space-y-4 text-gray-600 leading-relaxed">
+                <p>你好！欢迎来到我的技术博客。这里是我记录技术学习、分享项目经验的个人空间。</p>
+                <p>我相信<strong class="text-gray-900">"输出是最好的学习方式"</strong>。通过写作，我能更系统地整理思路，发现自己理解上的盲区，同时也希望能帮助到正在学习相关技术的朋友。</p>
+                <p>这个博客主要关注 <strong class="text-gray-900">前端开发</strong>、<strong class="text-gray-900">后端架构</strong>、<strong class="text-gray-900">DevOps</strong> 以及 <strong class="text-gray-900">工程实践</strong> 等领域。</p>
+              </div>
+            </section>
+
+            <section class="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+              <h2 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2"><span class="w-1 h-6 bg-emerald-500 rounded-full"></span>技术栈</h2>
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                ${['TypeScript', 'React', 'Vue', 'Node.js', 'Astro', 'Tailwind CSS', 'Docker', 'PostgreSQL', 'Redis'].map(tech => `
+                  <div class="flex items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-blue-50 hover:border-blue-200 transition-colors border border-gray-100">
+                    <svg class="w-4 h-4 text-blue-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    <span class="text-sm font-medium text-gray-700">${tech}</span>
+                  </div>
+                `).join('')}
+              </div>
+            </section>
+          </div>
+
+          <div class="space-y-6">
+            <section class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+              <h3 class="font-bold text-gray-900 mb-4">联系方式</h3>
+              <div class="space-y-3">
+                <a href="mailto:hello@example.com" class="flex items-center gap-3 text-sm text-gray-600 hover:text-blue-600 transition-colors"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>hello@example.com</a>
+                <a href="https://github.com/k4xus" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-sm text-gray-600 hover:text-blue-600 transition-colors" aria-label="GitHub profile"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>GitHub</a>
+              </div>
+            </section>
+            <section class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+              <h3 class="font-bold text-gray-900 mb-4">博客统计</h3>
+              <div class="space-y-4">
+                <div class="flex justify-between"><span class="text-sm text-gray-500">文章数</span><span class="text-lg font-bold">${POSTS.length}</span></div>
+                <div class="flex justify-between"><span class="text-sm text-gray-500">标签数</span><span class="text-lg font-bold">${getAllTags().length}</span></div>
+                <div class="flex justify-between"><span class="text-sm text-gray-500">最近更新</span><span class="text-sm font-medium">${POSTS[0].date}</span></div>
+              </div>
+            </section>
+          </div>
+        </div>
+      `;
+    }
+
+    // ===== Router =====
+    function render() {
+      const hash = window.location.hash || '#/';
+      const main = document.getElementById('main-content');
+
+      // Update nav active state
+      document.querySelectorAll('[data-nav]').forEach(el => {
+        const nav = el.getAttribute('data-nav');
+        if (nav === 'home' && (hash === '#/' || hash.startsWith('#/post') || hash.startsWith('#/tag'))) {
+          el.className = 'px-4 py-2 rounded-lg text-sm font-medium transition-colors text-blue-700 bg-blue-50';
+        } else if (nav === 'about' && hash === '#/about') {
+          el.className = 'px-4 py-2 rounded-lg text-sm font-medium transition-colors text-blue-700 bg-blue-50';
+        } else {
+          el.className = 'px-4 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors';
+        }
+      });
+
+      let page, title;
+      if (hash === '#/' || hash === '#') {
+        page = renderHome(null);
+        title = 'TechBlog — 探索技术，记录成长';
+      } else if (hash.startsWith('#/post/')) {
+        const id = hash.replace('#/post/', '');
+        page = renderPost(id);
+        const post = POSTS.find(p => p.id === id);
+        title = post ? `${post.title} — TechBlog` : '文章不存在 — TechBlog';
+      } else if (hash.startsWith('#/tag/')) {
+        const tag = hash.replace('#/tag/', '');
+        page = renderHome(unescape(tag));
+        title = `#${tag} — TechBlog`;
+      } else if (hash === '#/about') {
+        page = renderAbout();
+        title = '关于 — TechBlog';
+      } else {
+        page = renderHome(null);
+        title = 'TechBlog — 探索技术，记录成长';
+      }
+
+      main.innerHTML = `<div class="animate-fade-in-up">${page}</div>`;
+      document.title = title;
+      window.scrollTo(0, 0);
+    }
+
+    window.addEventListener('hashchange', render);
+    window.addEventListener('DOMContentLoaded', render);
+
+    // Close mobile menu on link click
+    document.addEventListener('click', (e) => {
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileMenu && !mobileMenu.classList.contains('hidden') && e.target.closest('a')) {
+        mobileMenu.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>

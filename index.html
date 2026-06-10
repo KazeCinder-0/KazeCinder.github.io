@@ -211,6 +211,107 @@
     let allPosts = [];
     let postsLoaded = false;
 
+    // ===== Inline Fallback Data (works on file:// protocol) =====
+    // When opened as file://, fetch() is blocked by CORS, so we use this as fallback.
+    const FALLBACK_POSTS = [
+      {
+        "id": "lc-1",
+        "title": "第1章. AI通识与基础",
+        "excerpt": "了解AI的发展历史以及大模型应用开发的基本技术，掌握AI智能产生的核心要素。",
+        "date": "2026-06-10",
+        "tags": ["AI", "LangChain", "通识"],
+        "category": "langchain",
+        "chapter": "第一章",
+        "author": "King Cobra",
+        "readTime": "8 min",
+        "content": "content/langchain/chapter-1/01-ai-compass.md"
+      },
+      {
+        "id": "lc-2",
+        "title": "第1节. 基本概念和入门 (LangGraph)",
+        "excerpt": "学习LangGraph的核心组件：Node、Edge、State，从零构建你的第一个Agent。",
+        "date": "2026-06-10",
+        "tags": ["LangGraph", "Agent", "Python"],
+        "category": "langchain",
+        "chapter": "第一章",
+        "author": "King Cobra",
+        "readTime": "12 min",
+        "content": "content/langchain/chapter-1/02-basic-concepts.md"
+      },
+      {
+        "id": "lc-3",
+        "title": "第1节. LangChain核心组件",
+        "excerpt": "认识LangChain平台，学习Model、Tools、Prompts、Memory等核心组件的使用方法。",
+        "date": "2026-06-10",
+        "tags": ["LangChain", "Agent", "模型"],
+        "category": "langchain",
+        "chapter": "第二章",
+        "author": "King Cobra",
+        "readTime": "6 min",
+        "content": "content/langchain/chapter-2/01-core-components.md"
+      },
+      {
+        "id": "lc-4",
+        "title": "第2节. Agent入门实战（AI私厨）",
+        "excerpt": "利用LangChain和多模态AI实现一个多模态智能体应用：AI私厨，实现食谱推荐。",
+        "date": "2026-06-10",
+        "tags": ["Agent", "多模态", "实战"],
+        "category": "langchain",
+        "chapter": "第二章",
+        "author": "King Cobra",
+        "readTime": "15 min",
+        "content": "content/langchain/chapter-2/03-agent-intro.md"
+      },
+      {
+        "id": "lc-5",
+        "title": "第1节. Runtime (Agent内部状态)",
+        "excerpt": "理解LangChain的Runtime机制：State（短期记忆）、Store（长期记忆）、Context（运行上下文）。",
+        "date": "2026-06-10",
+        "tags": ["Runtime", "Agent", "状态管理"],
+        "category": "langchain",
+        "chapter": "第三章",
+        "author": "King Cobra",
+        "readTime": "10 min",
+        "content": "content/langchain/chapter-3/01-runtime.md"
+      },
+      {
+        "id": "lc-6",
+        "title": "第2节. Middleware (中间件)",
+        "excerpt": "学习LangChain的中间件机制：预定义中间件、自定义中间件、高级用法。",
+        "date": "2026-06-10",
+        "tags": ["Middleware", "Agent", "高级"],
+        "category": "langchain",
+        "chapter": "第三章",
+        "author": "King Cobra",
+        "readTime": "12 min",
+        "content": "content/langchain/chapter-3/02-middleware.md"
+      },
+      {
+        "id": "lc-7",
+        "title": "第3节. EmailAgent案例",
+        "excerpt": "利用Runtime和Middleware知识实现一个完整的Email Agent，支持鉴权、邮件操作和人工确认。",
+        "date": "2026-06-10",
+        "tags": ["Agent", "实战", "Email"],
+        "category": "langchain",
+        "chapter": "第三章",
+        "author": "King Cobra",
+        "readTime": "15 min",
+        "content": "content/langchain/chapter-3/03-email-agent.md"
+      },
+      {
+        "id": "vibe-1",
+        "title": "2026 年 AI 编码的渐进式 Spec 实战指南",
+        "excerpt": "阿里开发者分享AI编码实践：Spec Coding、渐进式复杂度、知识飞轮等核心方法论。",
+        "date": "2026-06-10",
+        "tags": ["AI Coding", "Spec", "VibeCoding"],
+        "category": "vibecoding",
+        "chapter": "第一章",
+        "author": "King Cobra",
+        "readTime": "10 min",
+        "content": "content/vibecoding/01-progressive-spec-guide.md"
+      }
+    ];
+
     // ===== Utilities =====
     function escapeHtml(str) {
       const div = document.createElement('div');
@@ -230,15 +331,21 @@
     // ===== Load Posts =====
     async function loadPosts() {
       try {
+        // Try to fetch from posts.json first (works on HTTP servers)
         const response = await fetch('data/posts.json');
-        allPosts = await response.json();
-        allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
-        postsLoaded = true;
-        render();
+        if (response.ok) {
+          allPosts = await response.json();
+        } else {
+          throw new Error('posts.json not found');
+        }
       } catch (err) {
-        console.error('Failed to load posts:', err);
-        document.getElementById('main-content').innerHTML = '<div class="text-center py-16"><p class="text-muted">加载文章列表失败</p></div>';
+        // Fallback to inline data (works on file:// protocol)
+        console.warn('fetch failed, using inline fallback data:', err);
+        allPosts = [...FALLBACK_POSTS];
       }
+      allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+      postsLoaded = true;
+      render();
     }
 
     // ===== Load Markdown Content =====

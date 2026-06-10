@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="King Cobra's Blog — Code, create, conquer.">
+  <meta name="author" content="King Cobra">
+  <meta property="og:title" content="King Cobra's Blog">
+  <meta property="og:description" content="Code, create, conquer.">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>King Cobra — Code, create, conquer.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Space Grotesk"', '"PingFang SC"', '"Microsoft YaHei"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', '"Fira Code"', 'Consolas', 'monospace'],
+          },
+          colors: {
+            bg: '#0a0a0b',
+            surface: '#13131a',
+            border: '#1e1e2e',
+            text: '#e2e2e8',
+            muted: '#6b6b80',
+            accent1: '#a855f7',
+            accent2: '#06b6d4',
+            accent3: '#f43f5e',
+          },
+          animation: {
+            'gradient': 'gradient 8s ease infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            gradient: {
+              '0%, 100%': { backgroundPosition: '0% 50%' },
+              '50%': { backgroundPosition: '50% 100%' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-20px)' },
+            }
+          }
+        },
+      },
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { outline-offset: 2px; }
+    *:focus-visible { outline: 2px solid #a855f7; border-radius: 4px; }
+    ::selection { background: rgba(168, 85, 247, 0.3); color: #fff; }
+    html { scroll-behavior: smooth; }
+    body { -webkit-font-smoothing: antialiased; background-color: #0a0a0b; }
+    .text-gradient {
+      background: linear-gradient(135deg, #a855f7, #06b6d4, #f43f5e);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradient 8s ease infinite;
+    }
+    .border-gradient {
+      border-image: linear-gradient(135deg, #a855f7, #06b6d4, #f43f5e) 1;
+    }
+    .glass {
+      background: rgba(19, 19, 26, 0.6);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .glow-purple { box-shadow: 0 0 40px rgba(168, 85, 247, 0.15); }
+    .glow-cyan { box-shadow: 0 0 40px rgba(6, 182, 212, 0.15); }
+    .glow-pink { box-shadow: 0 0 40px rgba(244, 63, 94, 0.15); }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+    .stagger-1 { animation-delay: 0.1s; opacity: 0; }
+    .stagger-2 { animation-delay: 0.2s; opacity: 0; }
+    .stagger-3 { animation-delay: 0.3s; opacity: 0; }
+    .stagger-4 { animation-delay: 0.4s; opacity: 0; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+    }
+    @media print { body { background: white; color: black; } nav, footer, button { display: none !important; } }
+    .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .card-hover {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-hover:hover {
+      transform: translateY(-4px);
+      border-color: rgba(168, 85, 247, 0.3);
+    }
+    .tag-hover:hover {
+      background: linear-gradient(135deg, #a855f7, #06b6d4);
+      color: white;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body class="min-h-[100dvh] flex flex-col text-text">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-purple-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">跳转到主要内容</a>
+
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 glass border-b border-border" role="navigation" aria-label="主导航">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="#/" class="flex items-center gap-3 group" aria-label="首页">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 via-cyan-500 to-pink-500 flex items-center justify-center text-white font-bold text-sm group-hover:scale-110 transition-transform duration-300">KC</div>
+          <span class="text-lg font-bold text-text">King Cobra</span>
+        </a>
+        <div class="hidden md:flex items-center gap-1" role="menubar">
+          <a href="#/" class="px-4 py-2 rounded-lg text-sm font-medium text-purple-400 bg-purple-500/10" role="menuitem" data-nav="home">首页</a>
+          <a href="#/about" class="px-4 py-2 rounded-lg text-sm font-medium text-muted hover:text-text hover:bg-surface transition-colors" role="menuitem" data-nav="about">关于</a>
+          <a href="https://github.com/k4xus" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-lg text-sm font-medium text-muted hover:text-text hover:bg-surface transition-colors" role="menuitem">GitHub</a>
+        </div>
+        <button class="md:hidden p-2 rounded-lg text-muted hover:bg-surface transition-colors" aria-label="打开菜单" aria-expanded="false" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+      <div id="mobile-menu" class="hidden md:hidden pb-4 border-t border-border mt-2">
+        <div class="flex flex-col gap-1 pt-3">
+          <a href="#/" class="px-4 py-2 rounded-lg text-sm font-medium text-purple-400 bg-purple-500/10">首页</a>
+          <a href="#/about" class="px-4 py-2 rounded-lg text-sm font-medium text-muted hover:bg-surface">关于</a>
+          <a href="https://github.com/k4xus" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-lg text-sm font-medium text-muted hover:bg-surface">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main-content" class="flex-1 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full" role="main" aria-label="博客内容"></main>
+
+  <!-- Footer -->
+  <footer class="border-t border-border mt-16" role="contentinfo">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-sm text-muted">&copy; 2026 King Cobra. Code, create, conquer.</p>
+        <div class="flex items-center gap-4">
+          <a href="https://github.com/k4xus" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-text transition-colors" aria-label="GitHub">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ===== Data =====
+    const POSTS = [
+      { id: '1', title: 'TypeScript 5.0 新特性全面解析', excerpt: '深入探索装饰器、声明文件改进以及性能优化，帮助你写出更类型安全的代码。', date: '2026-06-08', tags: ['TypeScript', '前端', '编程'], author: 'King Cobra', readTime: '8 min', icon: '📘', color: 'from-purple-500/20 to-purple-600/20' },
+      { id: '2', title: 'React Server Components 深入实践', excerpt: '从零开始理解 RSC 核心理念，掌握服务端和客户端之间合理分配组件渲染的策略。', date: '2026-06-05', tags: ['React', '前端', '架构'], author: 'King Cobra', readTime: '12 min', icon: '⚛️', color: 'from-cyan-500/20 to-cyan-600/20' },
+      { id: '3', title: 'Tailwind CSS v4 迁移指南', excerpt: 'Tailwind CSS v4 带来了重大架构变更，从 CSS-first 配置到性能提升，一文带你完成迁移。', date: '2026-06-02', tags: ['Tailwind', 'CSS', '前端'], author: 'King Cobra', readTime: '6 min', icon: '🎨', color: 'from-pink-500/20 to-pink-600/20' },
+      { id: '4', title: 'Deno 与 Bun 性能对比评测', excerpt: '分别使用 Deno 和 Bun 构建同一个 REST API 服务，从三个维度进行全方位对比。', date: '2026-05-28', tags: ['后端', '性能', 'Node.js'], author: 'King Cobra', readTime: '10 min', icon: '⚡', color: 'from-yellow-500/20 to-yellow-600/20' },
+      { id: '5', title: 'Web 性能优化：从 3 秒到 300 毫秒', excerpt: '记录了一次真实项目的性能优化历程，从 Lighthouse 评分 45 到 98 的完整优化思路。', date: '2026-05-25', tags: ['性能', '前端', '优化'], author: 'King Cobra', readTime: '15 min', icon: '🚀', color: 'from-green-500/20 to-green-600/20' },
+      { id: '6', title: '前端开发者必备：Docker 入门与实践', excerpt: '不需要成为运维专家，也能用好 Docker。用最简单的案例带你搭建本地开发环境。', date: '2026-05-20', tags: ['Docker', 'DevOps', '工具'], author: 'King Cobra', readTime: '7 min', icon: '🐳', color: 'from-blue-500/20 to-blue-600/20' },
+    ];
+
+    const ARTICLES = {
+      '1': `<h1 class="text-3xl md:text-5xl font-bold mb-6 tracking-tight leading-tight">TypeScript 5.0 新特性全面解析</h1>
+        <div class="flex flex-wrap items-center gap-3 mb-8 text-sm"><span class="text-muted">2026-06-08</span><span class="text-border">·</span><span class="text-muted">8 min read</span><span class="text-border">·</span><span class="text-muted">By King Cobra</span></div>
+        <h2>为什么重要？</h2><p>TypeScript 5.0 是近年来最重要的版本更新之一。它带来了诸多令人期待的新特性，包括装饰器、声明文件改进以及显著的性能优化。</p>
+        <h2>装饰器（Decorators）</h2><p>TypeScript 5.0 终于将装饰器从实验性功能正式纳入语言规范。</p>
+        <pre class="bg-surface border border-border rounded-lg p-4 overflow-x-auto my-6 text-sm font-mono"><code>function timed(target, propertyKey, descriptor) {
+  const original = descriptor.value;
+  descriptor.value = function (...args) {
+    const start = Date.now();
+    const result = original.apply(this, args);
+    console.log(\`\${String(propertyKey)} took \${Date.now() - start}ms\`);
+    return result;
+  };
+  return descriptor;
+}</code></pre>
+        <h2>verbatimModuleSyntax</h2><p>提供了更精细的模块导入控制：</p>
+        <pre class="bg-surface border border-border rounded-lg p-4 overflow-x-auto my-6 text-sm font-mono"><code>// 使用 import type 只导入类型
+import type { SomeType } from './module';
+import { someValue } from './module';</code></pre>
+        <h2>性能提升</h2>
+        <table class="w-full border-collapse my-6 text-sm"><thead><tr class="bg-surface"><th class="border border-border p-3 text-left">项目</th><th class="border border-border p-3 text-left">TS 4.9</th><th class="border border-border p-3 text-left">TS 5.0</th><th class="border border-border p-3 text-left">提升</th></tr></thead><tbody><tr><td class="border border-border p-3">增量编译</td><td class="border border-border p-3">12.3s</td><td class="border border-border p-3">7.4s</td><td class="border border-border p-3 text-green-400 font-medium">~40%</td></tr><tr><td class="border border-border p-3">冷启动</td><td class="border border-border p-3">8.7s</td><td class="border border-border p-3">5.2s</td><td class="border border-border p-3 text-green-400 font-medium">~40%</td></tr><tr><td class="border border-border p-3">内存占用</td><td class="border border-border p-3">512MB</td><td class="border border-border p-3">410MB</td><td class="border border-border p-3 text-green-400 font-medium">~20%</td></tr></tbody></table>
+        <blockquote class="border-l-4 border-purple-500 bg-purple-500/10 p-4 my-8 not-italic"><p class="text-purple-300">强烈建议所有 TypeScript 项目升级到最新版本！</p></blockquote>`,
+      '2': `<h1 class="text-3xl md:text-5xl font-bold mb-6 tracking-tight leading-tight">React Server Components 深入实践</h1>
+        <div class="flex flex-wrap items-center gap-3 mb-8 text-sm"><span class="text-muted">2026-06-05</span><span class="text-border">·</span><span class="text-muted">12 min read</span><span class="text-border">·</span><span class="text-muted">By King Cobra</span></div>
+        <h2>什么是 RSC？</h2><p>React Server Components (RSC) 是 React 架构的重大革新。它允许你在服务器上运行组件，只将必要的 HTML 和最小化的 JavaScript 发送到客户端。</p>
+        <h2>核心优势</h2><ul class="list-disc ml-6 my-6 space-y-2"><li>零 bundle 体积 — 服务器组件不会被发送到客户端</li><li>直接访问后端资源 — 数据库、文件系统</li><li>自动代码分割 — 客户端和服务器组件之间</li></ul>
+        <pre class="bg-surface border border-border rounded-lg p-4 overflow-x-auto my-6 text-sm font-mono"><code>async function BlogPost({ id }) {
+  const post = await db.post.findUnique({ where: { id } });
+  return (
+    &lt;article&gt;
+      &lt;h1&gt;{post.title}&lt;/h1&gt;
+      &lt;Content data={post.content} /&gt;
+    &lt;/article&gt;
+  );
+}</code></pre>
+        <blockquote class="border-l-4 border-cyan-500 bg-cyan-500/10 p-4 my-8 not-italic"><p class="text-cyan-300">理解 RSC 的关键：服务器组件是默认，客户端组件需要 "use client" 标记。</p></blockquote>`,
+      '3': `<h1 class="text-3xl md:text-5xl font-bold mb-6 tracking-tight leading-tight">Tailwind CSS v4 迁移指南</h1>
+        <div class="flex flex-wrap items-center gap-3 mb-8 text-sm"><span class="text-muted">2026-06-02</span><span class="text-border">·</span><span class="text-muted">6 min read</span><span class="text-border">·</span><span class="text-muted">By King Cobra</span></div>
+        <h2>什么是 v4？</h2><p>Tailwind CSS v4 是 CSS-first 的重大转折点。不再需要 JavaScript 配置文件，所有配置都在 CSS 中完成。</p>
+        <pre class="bg-surface border border-border rounded-lg p-4 overflow-x-auto my-6 text-sm font-mono"><code>/* v4 配置方式 - CSS 中 */
+@theme {
+  --color-primary: #a855f7;
+  --color-accent: #06b6d4;
+  --font-sans: 'Space Grotesk', system-ui, sans-serif;
+}</code></pre>
+        <blockquote class="border-l-4 border-pink-500 bg-pink-500/10 p-4 my-8 not-italic"><p class="text-pink-300">v4 的启动速度快了 8 倍，这对大型项目来说是革命性的提升。</p></blockquote>`,
+      '4': `<h1 class="text-3xl md:text-5xl font-bold mb-6 tracking-tight leading-tight">Deno 与 Bun 性能对比评测</h1>
+        <div class="flex flex-wrap items-center gap-3 mb-8 text-sm"><span class="text-muted">2026-05-28</span><span class="text-border">·</span><span class="text-muted">10 min read</span><span class="text-border">·</span><span class="text-muted">By King Cobra</span></div>
+        <h2>测试结果</h2>
+        <table class="w-full border-collapse my-6 text-sm"><thead><tr class="bg-surface"><th class="border border-border p-3 text-left">指标</th><th class="border border-border p-3 text-left">Bun</th><th class="border border-border p-3 text-left">Deno</th></tr></thead><tbody><tr><td class="border border-border p-3">冷启动时间</td><td class="border border-border p-3">42ms</td><td class="border border-border p-3">185ms</td></tr><tr><td class="border border-border p-3">内存占用</td><td class="border border-border p-3">28MB</td><td class="border border-border p-3">56MB</td></tr><tr><td class="border border-border p-3">QPS</td><td class="border border-border p-3">45,200</td><td class="border border-border p-3">32,100</td></tr></tbody></table>
+        <blockquote class="border-l-4 border-yellow-500 bg-yellow-500/10 p-4 my-8 not-italic"><p class="text-yellow-300">Bun 在性能测试中全面领先，但 Deno 的安全模型和标准库更完善。</p></blockquote>`,
+      '5': `<h1 class="text-3xl md:text-5xl font-bold mb-6 tracking-tight leading-tight">Web 性能优化：从 3 秒到 300 毫秒</h1>
+        <div class="flex flex-wrap items-center gap-3 mb-8 text-sm"><span class="text-muted">2026-05-25</span><span class="text-border">·</span><span class="text-muted">15 min read</span><span class="text-border">·</span><span class="text-muted">By King Cobra</span></div>
+        <h2>优化方案</h2>
+        <pre class="bg-surface border border-border rounded-lg p-4 overflow-x-auto my-6 text-sm font-mono"><code>// 代码分割
+const Dashboard = lazy(() => import('./Dashboard'));
+
+// 图片懒加载
+&lt;img loading="lazy" src="hero.webp" /&gt;
+
+// 虚拟列表
+&lt;FixedSizeList items={data} height={600} width="100%" /&gt;</code></pre>
+        <h2>优化结果</h2>
+        <table class="w-full border-collapse my-6 text-sm"><thead><tr class="bg-surface"><th class="border border-border p-3 text-left">指标</th><th class="border border-border p-3 text-left">优化前</th><th class="border border-border p-3 text-left">优化后</th></tr></thead><tbody><tr><td class="border border-border p-3">LCP</td><td class="border border-border p-3">3.2s</td><td class="border border-border p-3 text-green-400 font-medium">0.3s</td></tr><tr><td class="border border-border p-3">FID</td><td class="border border-border p-3">800ms</td><td class="border border-border p-3 text-green-400 font-medium">12ms</td></tr><tr><td class="border border-border p-3">Bundle</td><td class="border border-border p-3">2.1MB</td><td class="border border-border p-3 text-green-400 font-medium">340KB</td></tr></tbody></table>
+        <blockquote class="border-l-4 border-green-500 bg-green-500/10 p-4 my-8 not-italic"><p class="text-green-300">性能优化是一个持续的过程，需要结合数据和用户反馈不断迭代。</p></blockquote>`,
+      '6': `<h1 class="text-3xl md:text-5xl font-bold mb-6 tracking-tight leading-tight">前端开发者必备：Docker 入门与实践</h1>
+        <div class="flex flex-wrap items-center gap-3 mb-8 text-sm"><span class="text-muted">2026-05-20</span><span class="text-border">·</span><span class="text-muted">7 min read</span><span class="text-border">·</span><span class="text-muted">By King Cobra</span></div>
+        <pre class="bg-surface border border-border rounded-lg p-4 overflow-x-auto my-6 text-sm font-mono"><code># Dockerfile
+FROM node:20-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+COPY . .
+RUN npm run build
+
+FROM nginx:alpine
+COPY --from=builder /app/dist /usr/share/nginx/html
+EXPOSE 80</code></pre>
+        <blockquote class="border-l-4 border-blue-500 bg-blue-500/10 p-4 my-8 not-italic"><p class="text-blue-300">掌握 Docker 的基本用法，是前端开发者进阶的必经之路。</p></blockquote>`,
+    };
+
+    // ===== Utilities =====
+    function getAllTags() {
+      const set = new Set();
+      POSTS.forEach(p => p.tags.forEach(t => set.add(t)));
+      return Array.from(set).sort();
+    }
+    function getPostsByTag(tag) { return POSTS.filter(p => p.tags.includes(tag)); }
+    function escapeHtml(str) { const div = document.createElement('div'); div.textContent = str; return div.innerHTML; }
+    function renderTagBadge(tag, active) {
+      return `<button class="px-3 py-1 rounded-full text-xs font-medium font-mono border border-border text-muted hover:tag-hover transition-all duration-300 cursor-pointer ${active === tag ? '!border-purple-500 !text-purple-400 !bg-purple-500/10' : ''}" onclick="window.location.hash='#/tag/${tag}'">#${escapeHtml(tag)}</button>`;
+    }
+
+    // ===== Pages =====
+    function renderHome(activeTag) {
+      const allTags = getAllTags();
+      const featuredPosts = POSTS.slice(0, 3);
+      const listPosts = activeTag ? getPostsByTag(activeTag) : POSTS.slice(3);
+      const isTagPage = !!activeTag;
+
+      return `
+        ${isTagPage ? `
+          <div class="mb-12 animate-fade-in-up">
+            <button onclick="window.location.hash='#/'" class="flex items-center gap-2 text-sm text-muted hover:text-text transition-colors mb-4 group" aria-label="返回首页">
+              <svg class="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+              返回
+            </button>
+            <h1 class="text-4xl md:text-5xl font-bold mb-2"><span class="text-gradient">#${escapeHtml(activeTag)}</span></h1>
+            <p class="text-muted">共 <strong class="text-text">${listPosts.length}</strong> 篇文章</p>
+          </div>
+        ` : ''}
+
+        ${!isTagPage ? `
+          <section class="mb-16 animate-fade-in-up stagger-1">
+            <div class="relative rounded-2xl overflow-hidden border border-border p-8 md:p-12">
+              <div class="absolute inset-0 bg-gradient-to-br from-purple-600/20 via-cyan-600/10 to-pink-600/20 animate-pulse-slow"></div>
+              <div class="absolute -top-24 -right-24 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"></div>
+              <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl"></div>
+              <div class="relative z-10">
+                <p class="text-purple-400 font-mono text-sm mb-3">const blog = new Blog('King Cobra');</p>
+                <h1 class="text-3xl md:text-5xl font-bold mb-6 tracking-tight leading-tight">Code, create, <span class="text-gradient">conquer.</span></h1>
+                <p class="text-muted text-lg max-w-2xl leading-relaxed mb-8">King Cobra 的技术博客，记录前端、后端、DevOps 的工程实践与思考。</p>
+                <div class="flex flex-wrap gap-3">
+                  <span class="px-4 py-2 bg-surface border border-border rounded-full text-sm text-muted">${POSTS.length} 文章</span>
+                  <span class="px-4 py-2 bg-surface border border-border rounded-full text-sm text-muted">${allTags.length} 标签</span>
+                  <span class="px-4 py-2 bg-surface border border-border rounded-full text-sm text-muted">持续更新</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="mb-12 animate-fade-in-up stagger-2">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="text-xs font-mono text-muted uppercase tracking-wider mr-2">tags:</span>
+              <button class="px-3 py-1 rounded-full text-xs font-medium font-mono border border-border text-muted hover:tag-hover transition-all duration-300 cursor-pointer bg-purple-500/10 border-purple-500 text-purple-400" onclick="window.location.hash='#/'">all</button>
+              ${allTags.map(t => renderTagBadge(t, activeTag)).join('')}
+            </div>
+          </section>
+        ` : ''}
+
+        ${!isTagPage ? `
+          <section class="mb-16 animate-fade-in-up stagger-3">
+            <h2 class="text-xs font-mono text-muted uppercase tracking-wider mb-6 flex items-center gap-2"><span class="w-1 h-4 bg-purple-500 rounded-full"></span>featured</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+              ${featuredPosts.map(p => `
+                <article class="card-hover bg-surface border border-border rounded-xl overflow-hidden cursor-pointer group" onclick="window.location.hash='#/post/${p.id}'">
+                  <div class="h-40 bg-gradient-to-br ${p.color} flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+                    <span class="text-5xl">${p.icon}</span>
+                  </div>
+                  <div class="p-5">
+                    <h3 class="font-bold text-text mb-2 group-hover:text-purple-400 transition-colors line-clamp-2">${escapeHtml(p.title)}</h3>
+                    <p class="text-xs text-muted mb-3 line-clamp-2">${escapeHtml(p.excerpt)}</p>
+                    <div class="flex items-center justify-between">
+                      <div class="flex flex-wrap gap-1">${p.tags.slice(0, 2).map(t => `<span class="text-xs px-2 py-0.5 bg-surface text-muted rounded font-mono">${escapeHtml(t)}</span>`).join('')}</div>
+                      <span class="text-xs text-muted">${p.date}</span>
+                    </div>
+                  </div>
+                </article>
+              `).join('')}
+            </div>
+          </section>
+        ` : ''}
+
+        <section class="animate-fade-in-up stagger-4">
+          <h2 class="text-xs font-mono text-muted uppercase tracking-wider mb-6 flex items-center gap-2"><span class="w-1 h-4 ${isTagPage ? 'bg-purple-500' : 'bg-cyan-500'} rounded-full"></span>${isTagPage ? 'filter: ' + escapeHtml(activeTag) : 'recent'}</h2>
+          <div class="space-y-4">
+            ${listPosts.length > 0 ? listPosts.map(p => `
+              <article class="card-hover bg-surface border border-border rounded-xl p-6 cursor-pointer group flex flex-col sm:flex-row sm:items-start gap-4" onclick="window.location.hash='#/post/${p.id}'">
+                <div class="flex-1 min-w-0">
+                  <h3 class="text-lg font-bold text-text mb-2 group-hover:text-purple-400 transition-colors">${escapeHtml(p.title)}</h3>
+                  <p class="text-muted text-sm mb-3 line-clamp-2">${escapeHtml(p.excerpt)}</p>
+                  <div class="flex flex-wrap items-center gap-3">
+                    <div class="flex flex-wrap gap-1">${p.tags.map(t => `<span class="text-xs px-2 py-0.5 bg-surface text-muted rounded font-mono cursor-pointer hover:text-purple-400 transition-colors" onclick="event.stopPropagation(); window.location.hash='#/tag/${t}'">#${escapeHtml(t)}</span>`).join('')}</div>
+                    <span class="text-xs text-muted font-mono">${p.readTime}</span>
+                    <span class="text-xs text-muted font-mono">${p.date}</span>
+                  </div>
+                </div>
+              </article>
+            `).join('') : '<div class="text-center py-16"><p class="text-muted">暂无文章</p></div>'}
+          </div>
+        </section>
+      `;
+    }
+
+    function renderPost(id) {
+      const article = ARTICLES[id];
+      const post = POSTS.find(p => p.id === id);
+      if (!article || !post) return '<div class="text-center py-16"><p class="text-muted">文章不存在</p><a href="#/" class="text-purple-400 hover:underline mt-4 inline-block font-mono text-sm">→ back</a></div>';
+
+      const relatedPosts = POSTS.filter(p => p.id !== id && p.tags.some(t => post.tags.includes(t))).slice(0, 3);
+
+      return `
+        <button onclick="window.history.back()" class="flex items-center gap-2 text-sm text-muted hover:text-text transition-colors mb-8 group" aria-label="返回">
+          <svg class="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          back
+        </button>
+
+        <article class="mb-12">
+          <div class="flex flex-wrap items-center gap-3 mb-6 text-xs font-mono text-muted">
+            <span>${post.date}</span><span class="text-border">|</span><span>${post.readTime}</span><span class="text-border">|</span><span>${post.author}</span>
+          </div>
+          <h1 class="text-3xl md:text-5xl font-bold mb-8 tracking-tight leading-tight">${escapeHtml(post.title)}</h1>
+          <div class="flex flex-wrap gap-2 mb-8">
+            ${post.tags.map(t => `<button class="px-3 py-1 rounded-full text-xs font-medium font-mono border border-border text-muted hover:tag-hover transition-all duration-300 cursor-pointer" onclick="window.location.hash='#/tag/${t}'">#${escapeHtml(t)}</button>`).join('')}
+          </div>
+          <div class="border-t border-border"></div>
+        </article>
+
+        <section class="text-text leading-relaxed space-y-6 mb-12 text-base" style="line-height: 1.8;">
+          ${article.content}
+        </section>
+
+        <section class="mb-12">
+          <h2 class="text-xs font-mono text-muted uppercase tracking-wider mb-6 flex items-center gap-2"><span class="w-1 h-4 bg-cyan-500 rounded-full"></span>related</h2>
+          ${relatedPosts.length > 0 ? `
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              ${relatedPosts.map(p => `
+                <article class="card-hover bg-surface border border-border rounded-xl p-5 cursor-pointer group" onclick="window.location.hash='#/post/${p.id}'">
+                  <h3 class="font-semibold text-text mb-2 group-hover:text-purple-400 transition-colors line-clamp-2">${escapeHtml(p.title)}</h3>
+                  <p class="text-xs text-muted line-clamp-2 mb-3">${escapeHtml(p.excerpt)}</p>
+                  <span class="text-xs text-muted font-mono">${p.date}</span>
+                </article>
+              `).join('')}
+            </div>
+          ` : '<p class="text-muted text-sm">暂无相关文章</p>'}
+        </section>
+      `;
+    }
+
+    function renderAbout() {
+      return `
+        <section class="mb-16">
+          <div class="text-center mb-12">
+            <div class="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-purple-500 via-cyan-500 to-pink-500 rounded-2xl flex items-center justify-center text-white text-3xl font-bold shadow-lg animate-float">K</div>
+            <h1 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight leading-tight">Hi, I'm <span class="text-gradient">King Cobra</span></h1>
+            <p class="text-lg text-muted max-w-xl mx-auto leading-relaxed">开发者 · 开源爱好者 · 终身学习者</p>
+          </div>
+        </section>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="md:col-span-2 space-y-8">
+            <section class="bg-surface border border-border rounded-xl p-8">
+              <h2 class="text-xs font-mono text-muted uppercase tracking-wider mb-6 flex items-center gap-2"><span class="w-1 h-4 bg-purple-500 rounded-full"></span>about</h2>
+              <div class="space-y-4 text-muted leading-relaxed">
+                <p>你好！欢迎来到我的技术博客。</p>
+                <p>我相信 <span class="text-text font-medium">"输出是最好的学习方式"</span>。通过写作，我能更系统地整理思路，发现自己理解上的盲区，同时也希望能帮助到正在学习相关技术的朋友。</p>
+                <p>这个博客主要关注 <span class="text-purple-400">前端开发</span>、<span class="text-cyan-400">后端架构</span>、<span class="text-pink-400">DevOps</span> 以及 <span class="text-yellow-400">工程实践</span> 等领域。</p>
+              </div>
+            </section>
+
+            <section class="bg-surface border border-border rounded-xl p-8">
+              <h2 class="text-xs font-mono text-muted uppercase tracking-wider mb-6 flex items-center gap-2"><span class="w-1 h-4 bg-cyan-500 rounded-full"></span>stack</h2>
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                ${['TypeScript', 'React', 'Vue', 'Node.js', 'Astro', 'Tailwind CSS', 'Docker', 'PostgreSQL', 'Redis'].map(t => `
+                  <div class="flex items-center gap-2 p-3 bg-bg border border-border rounded-lg hover:border-purple-500/50 transition-colors">
+                    <svg class="w-4 h-4 text-purple-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    <span class="text-sm text-text">${t}</span>
+                  </div>
+                `).join('')}
+              </div>
+            </section>
+          </div>
+
+          <div class="space-y-6">
+            <section class="bg-surface border border-border rounded-xl p-6">
+              <h3 class="text-xs font-mono text-muted uppercase tracking-wider mb-4 flex items-center gap-2"><span class="w-1 h-4 bg-pink-500 rounded-full"></span>contact</h3>
+              <div class="space-y-3">
+                <a href="mailto:hello@kingcobra.dev" class="flex items-center gap-3 text-sm text-muted hover:text-purple-400 transition-colors">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                  hello@kingcobra.dev
+                </a>
+                <a href="https://github.com/k4xus" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-sm text-muted hover:text-purple-400 transition-colors">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                  github.com/k4xus
+                </a>
+              </div>
+            </section>
+            <section class="bg-surface border border-border rounded-xl p-6">
+              <h3 class="text-xs font-mono text-muted uppercase tracking-wider mb-4 flex items-center gap-2"><span class="w-1 h-4 bg-green-500 rounded-full"></span>stats</h3>
+              <div class="space-y-4">
+                <div class="flex justify-between"><span class="text-sm text-muted">Posts</span><span class="text-lg font-bold text-text font-mono">${POSTS.length}</span></div>
+                <div class="flex justify-between"><span class="text-sm text-muted">Tags</span><span class="text-lg font-bold text-text font-mono">${getAllTags().length}</span></div>
+                <div class="flex justify-between"><span class="text-sm text-muted">Last Update</span><span class="text-sm font-medium text-text font-mono">${POSTS[0].date}</span></div>
+              </div>
+            </section>
+          </div>
+        </div>
+      `;
+    }
+
+    // ===== Router =====
+    function render() {
+      const hash = window.location.hash || '#/';
+      const main = document.getElementById('main-content');
+      let page, title;
+
+      document.querySelectorAll('[data-nav]').forEach(el => {
+        const nav = el.getAttribute('data-nav');
+        if (nav === 'home' && (hash === '#/' || hash.startsWith('#/post') || hash.startsWith('#/tag'))) {
+          el.className = 'px-4 py-2 rounded-lg text-sm font-medium text-purple-400 bg-purple-500/10';
+        } else if (nav === 'about' && hash === '#/about') {
+          el.className = 'px-4 py-2 rounded-lg text-sm font-medium text-purple-400 bg-purple-500/10';
+        } else {
+          el.className = 'px-4 py-2 rounded-lg text-sm font-medium text-muted hover:text-text hover:bg-surface transition-colors';
+        }
+      });
+
+      if (hash === '#/' || hash === '#') { page = renderHome(null); title = 'King Cobra — Code, create, conquer.'; }
+      else if (hash.startsWith('#/post/')) { const id = hash.replace('#/post/', ''); const post = POSTS.find(p => p.id === id); page = renderPost(id); title = post ? `${post.title} | King Cobra` : 'Not Found | King Cobra'; }
+      else if (hash.startsWith('#/tag/')) { const tag = hash.replace('#/tag/', ''); page = renderHome(unescape(tag)); title = `#${tag} | King Cobra`; }
+      else if (hash === '#/about') { page = renderAbout(); title = 'About | King Cobra'; }
+      else { page = renderHome(null); title = 'King Cobra — Code, create, conquer.'; }
+
+      main.innerHTML = `<div class="animate-fade-in-up">${page}</div>`;
+      document.title = title;
+      window.scrollTo(0, 0);
+    }
+
+    window.addEventListener('hashchange', render);
+    window.addEventListener('DOMContentLoaded', render);
+    document.addEventListener('click', (e) => { const m = document.getElementById('mobile-menu'); if (m && !m.classList.contains('hidden') && e.target.closest('a')) { m.classList.add('hidden'); } });
+  </script>
+</body>
+</html>

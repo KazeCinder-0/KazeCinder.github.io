@@ -301,6 +301,30 @@
         "content": "content/langchain/chapter-3/03-email-agent.md"
       },
       {
+        "id": "lc-8",
+        "title": "第1节. 构建知识库",
+        "excerpt": "RAG核心应用场景：加载文档、切分文本、向量化、存入向量库的完整知识库构建流程。",
+        "date": "2026-06-10",
+        "tags": ["RAG", "向量库", "知识库"],
+        "category": "langchain",
+        "chapter": "第四章",
+        "author": "King Cobra",
+        "readTime": "12 min",
+        "content": "content/langchain/chapter-4/01-build-knowledge-base.md"
+      },
+      {
+        "id": "lc-9",
+        "title": "第2节. RAG Agent",
+        "excerpt": "将检索与生成结合，学习RAG常见架构和知识检索优化策略。",
+        "date": "2026-06-10",
+        "tags": ["RAG", "Agent", "检索优化"],
+        "category": "langchain",
+        "chapter": "第四章",
+        "author": "King Cobra",
+        "readTime": "14 min",
+        "content": "content/langchain/chapter-4/02-rag-agent.md"
+      },
+      {
         "id": "vibe-1",
         "title": "2026 年 AI 编码的渐进式 Spec 实战指南",
         "excerpt": "阿里开发者分享AI编码实践：Spec Coding、渐进式复杂度、知识飞轮等核心方法论。",
@@ -311,6 +335,18 @@
         "author": "King Cobra",
         "readTime": "10 min",
         "content": "content/vibecoding/01-progressive-spec-guide.md"
+      },
+      {
+        "id": "news-1",
+        "title": "AI 每日速递 | 2026-06-11",
+        "excerpt": "OpenAI 发布新一代多模态模型、DeepMind 开源推理框架、国内 AI 动态速递。",
+        "date": "2026-06-11",
+        "tags": ["AI新闻", "OpenAI", "DeepMind"],
+        "category": "dailynews",
+        "chapter": "",
+        "author": "King Cobra",
+        "readTime": "5 min",
+        "content": "content/dailynews/2026-06-11-ai-news.md"
       }
     ];
 
@@ -326,7 +362,8 @@
     }
 
     function renderCategoryBadge(category, active) {
-      const label = category === 'langchain' ? 'LangChain' : category === 'vibecoding' ? 'VibeCoding' : category;
+      const labels = { langchain: 'LangChain', vibecoding: 'VibeCoding', dailynews: '每日新闻' };
+      const label = labels[category] || category;
       return `<button class="px-4 py-2 rounded-lg text-sm font-medium border border-border ${active === category ? '!border-purple-500 text-purple-400 bg-purple-500/10' : 'text-muted hover:text-text hover:border-purple-500/50'} transition-all cursor-pointer" onclick="window.location.hash='#/category/${category}'">${label}</button>`;
     }
 
@@ -620,7 +657,7 @@
     // ===== Library Page =====
     function renderLibrary(activeCategory) {
       const categories = [...new Set(allPosts.map(p => p.category))].sort();
-      const categoryLabels = { langchain: 'LangChain', vibecoding: 'VibeCoding' };
+      const categoryLabels = { langchain: 'LangChain', vibecoding: 'VibeCoding', dailynews: '每日新闻' };
       const currentCategory = activeCategory || 'all';
 
       let postsToShow = allPosts;

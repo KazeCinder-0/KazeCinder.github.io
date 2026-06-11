@@ -1,8 +1,8 @@
-// js/data.js - 数据加载
+// js/data.js - 数据加载（全局变量和函数）
 let allPosts = [];
 let postsLoaded = false;
 
-export async function loadPosts() {
+async function loadPosts() {
   try {
     const response = await fetch('data/posts.json');
     if (response.ok) {
@@ -19,14 +19,12 @@ export async function loadPosts() {
   if (typeof render === 'function') render();
 }
 
-export function getAllTags() {
+function getAllTags() {
   const set = new Set();
   allPosts.forEach(p => p.tags.forEach(t => set.add(t)));
   return Array.from(set).sort();
 }
 
-export function getCategories() {
+function getCategories() {
   return [...new Set(allPosts.map(p => p.category))].sort();
 }
-
-export { allPosts, postsLoaded };

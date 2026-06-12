@@ -142,5 +142,17 @@
     "author": "King Cobra",
     "readTime": "8 min",
     "content": "content/vibecoding/02-agent-skills-engineering.md"
+  },
+  {
+    "id": "news-2",
+    "title": "AI 每日速递 | 2026-06-12",
+    "excerpt": "OpenAI更新Responses API原生支持Agent任务，Anthropic发布Windows版Claude Cowork+YOLO模式，华为云发布Agentic Infra新范式",
+    "date": "2026-06-12",
+    "tags": ["AI新闻", "OpenAI", "Anthropic", "华为云", "阶跃星辰", "微信AI"],
+    "category": "dailynews",
+    "chapter": "",
+    "author": "King Cobra",
+    "readTime": "5 min",
+    "content": "content/dailynews/2026-06-12-ai-news.md"
   }
 ]

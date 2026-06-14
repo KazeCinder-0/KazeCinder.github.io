@@ -178,5 +178,17 @@
     "author": "King Cobra",
     "readTime": "5 min",
     "content": "content/dailynews/2026-06-13-ai-news.md"
+  },
+  {
+    "id": "news-4",
+    "title": "AI 每日速递 | 2026-06-14",
+    "excerpt": "Anthropic 全球停用 Claude Opus 5，月之暗面发布 Kimi K2.7 Code，智谱 GLM-5.2 下周上线",
+    "date": "2026-06-14",
+    "tags": ["AI新闻"],
+    "category": "dailynews",
+    "chapter": "",
+    "author": "King Cobra",
+    "readTime": "5 min",
+    "content": "content/dailynews/2026-06-14-ai-news.md"
   }
 ]

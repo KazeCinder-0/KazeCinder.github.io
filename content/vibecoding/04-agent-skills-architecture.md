@@ -12,6 +12,8 @@ date: "2026-06-15"
 
 # Agent Skills 架构三部曲：从原理到企业级落地
 
+<p class="text-sm text-muted mb-4">作者：Kaze Cinder · 发布时间：2026年6月</p>
+
 > 本文基于真实技术面试对话整理，覆盖 Skill 本质、上下文控制、企业级安全三大核心维度。
 
 ---

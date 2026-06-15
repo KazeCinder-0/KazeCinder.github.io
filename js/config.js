@@ -22,7 +22,7 @@ const CONFIG = {
 
   // 作者信息
   author: 'Kaze Cinder',
-  githubUrl: 'https://github.com/kingCobra-0',
+  githubUrl: 'https://github.com/KazeCinder-0',
   email: '2408720644@qq.com',
 
   // 颜色主题（Tailwind 类映射）

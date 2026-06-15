@@ -248,6 +248,7 @@
     "chapter": "",
     "readTime": "12 min",
     "date": "2026-06-15",
+    "showMeta": true,
     "content": "content/vibecoding/04-agent-skills-architecture.md"
   }
 ]

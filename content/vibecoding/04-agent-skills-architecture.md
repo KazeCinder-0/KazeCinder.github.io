@@ -314,3 +314,11 @@ def execute_skill_in_sandbox(skill_path, input_data):
 ---
 
 *如有不同实践或补充，欢迎讨论。*
+
+---
+
+**作者**：Kaze Cinder（整理自 [ai.codefather.cn](https://ai.codefather.cn)）
+
+**发布时间**：2026年6月
+
+**来源**：微信公众号 @终码一生

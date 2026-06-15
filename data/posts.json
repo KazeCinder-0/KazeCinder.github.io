@@ -189,6 +189,18 @@
     "chapter": "",
     "author": "King Cobra",
     "readTime": "5 min",
-    "content": "content/dailynews/2026-06-14-ai-news.md"
+      "content": "content/dailynews/2026-06-14-ai-news.md"
+  },
+  {
+    "id": "news-5",
+    "title": "AI 每日速递 | 2026-06-15",
+    "excerpt": "智谱AI发布GLM-5.2百万上下文开源模型，Anthropic Mythos 5风波持续发酵，OpenAI遭多州调查，美团开源三连发",
+    "date": "2026-06-15",
+    "tags": ["AI新闻"],
+    "category": "dailynews",
+    "chapter": "",
+    "author": "King Cobra",
+    "readTime": "5 min",
+    "content": "content/dailynews/2026-06-15-ai-news.md"
   }
 ]

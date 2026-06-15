@@ -1,9 +1,30 @@
 // js/app.js - 初始化
+
+// 启动时用 CONFIG.author 替换静态 HTML 中的硬编码名字
+function applyAuthorName() {
+  const name = CONFIG.author || 'Kaze Cinder';
+  document.title = name + ' — Backend & AI';
+  // nav 栏
+  const navEl = document.getElementById('nav-author');
+  if (navEl) navEl.textContent = name;
+  // footer 版权
+  const footEl = document.getElementById('footer-copyright');
+  if (footEl) footEl.innerHTML = '&copy; 2026 ' + name + '. Backend & AI 工程实践。';
+  // meta 标签
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) metaDesc.setAttribute('content', name + "'s Blog — 后端与 AI 的工程实践与思考");
+  const metaAuthor = document.querySelector('meta[name="author"]');
+  if (metaAuthor) metaAuthor.setAttribute('content', name);
+  const metaOgTitle = document.querySelector('meta[property="og:title"]');
+  if (metaOgTitle) metaOgTitle.setAttribute('content', name + ' — Backend & AI');
+}
+
 window.addEventListener('hashchange', render);
 loadPosts();
 
 // 移动端菜单切换（管理 aria-expanded 状态）
 document.addEventListener('DOMContentLoaded', () => {
+  applyAuthorName();
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
   if (btn && menu) {

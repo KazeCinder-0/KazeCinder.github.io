@@ -30,38 +30,37 @@ async function render() {
 
   if (hash === '#/' || hash === '#') {
     page = await renderHome(null, null);
-    title = 'King Cobra — Backend & AI';
+    title = CONFIG.author + ' — Backend & AI';
   } else if (hash.startsWith('#/post/')) {
     const id = hash.replace('#/post/', '');
-    // 立刻显示加载骨架屏
     main.innerHTML = `<div class="animate-fade-in-up">
       <div class="flex flex-col items-center justify-center py-20 gap-4">
         <div class="w-8 h-8 border-2 border-purple-500/30 border-t-purple-500 rounded-full animate-spin"></div>
         <p class="text-muted font-mono text-sm">加载文章中...</p>
       </div>
     </div>`;
-    document.title = '加载中... | King Cobra';
+    document.title = '加载中... | ' + CONFIG.author;
     page = await renderPost(id);
     const post = allPosts.find(p => p.id === id);
-    title = post ? `${post.title} | King Cobra` : 'Not Found | King Cobra';
+    title = post ? post.title + ' | ' + CONFIG.author : 'Not Found | ' + CONFIG.author;
   } else if (hash.startsWith('#/tag/')) {
     const tag = hash.replace('#/tag/', '');
     page = await renderHome(tag, null);
-    title = `#${tag} | King Cobra`;
+    title = '#' + tag + ' | ' + CONFIG.author;
   } else if (hash.startsWith('#/category/')) {
     const category = hash.replace('#/category/', '');
     page = await renderHome(null, category);
-    title = `${CONFIG.categoryLabels[category] || category} | King Cobra`;
+    title = (CONFIG.categoryLabels[category] || category) + ' | ' + CONFIG.author;
   } else if (hash.startsWith('#/library')) {
     const category = hash.replace('#/library', '').replace('/', '');
     page = renderLibrary(category || null);
-    title = '知识库 | King Cobra';
+    title = '知识库 | ' + CONFIG.author;
   } else if (hash === '#/about') {
     page = renderAbout();
-    title = 'About | King Cobra';
+    title = 'About | ' + CONFIG.author;
   } else {
     page = await renderHome(null, null);
-    title = 'King Cobra — Backend & AI';
+    title = CONFIG.author + ' — Backend & AI';
   }
 
   main.innerHTML = `<div class="animate-fade-in-up">${page}</div>`;

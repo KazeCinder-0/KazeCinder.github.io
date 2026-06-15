@@ -21,7 +21,7 @@ const CONFIG = {
   ],
 
   // 作者信息
-  author: 'King Cobra',
+  author: 'Kaze Cinder',
   githubUrl: 'https://github.com/kingCobra-0',
   email: '2408720644@qq.com',
 

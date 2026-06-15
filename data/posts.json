@@ -4,10 +4,12 @@
     "title": "第1章. AI通识与基础",
     "excerpt": "了解AI的发展历史以及大模型应用开发的基本技术，掌握AI智能产生的核心要素。",
     "date": "2026-06-10",
-    "tags": ["LangChain", "Agent"],
+    "tags": [
+      "LangChain",
+      "Agent"
+    ],
     "category": "langchain",
     "chapter": "第一章",
-    "author": "King Cobra",
     "readTime": "8 min",
     "content": "content/langchain/chapter-1/01-ai-compass.md"
   },
@@ -16,10 +18,12 @@
     "title": "第1节. 基本概念和入门 (LangGraph)",
     "excerpt": "学习LangGraph的核心组件：Node、Edge、State，从零构建你的第一个Agent。",
     "date": "2026-06-10",
-    "tags": ["LangGraph", "Agent"],
+    "tags": [
+      "LangGraph",
+      "Agent"
+    ],
     "category": "langchain",
     "chapter": "第一章",
-    "author": "King Cobra",
     "readTime": "12 min",
     "content": "content/langchain/chapter-1/02-basic-concepts.md"
   },
@@ -28,10 +32,12 @@
     "title": "第1节. LangChain核心组件",
     "excerpt": "认识LangChain平台，学习Model、Tools、Prompts、Memory等核心组件的使用方法。",
     "date": "2026-06-10",
-    "tags": ["LangChain", "Agent"],
+    "tags": [
+      "LangChain",
+      "Agent"
+    ],
     "category": "langchain",
     "chapter": "第二章",
-    "author": "King Cobra",
     "readTime": "6 min",
     "content": "content/langchain/chapter-2/01-core-components.md"
   },
@@ -40,10 +46,12 @@
     "title": "第2节. Agent入门实战（AI私厨）",
     "excerpt": "利用LangChain和多模态AI实现一个多模态智能体应用：AI私厨，实现食谱推荐。",
     "date": "2026-06-10",
-    "tags": ["Agent", "实战"],
+    "tags": [
+      "Agent",
+      "实战"
+    ],
     "category": "langchain",
     "chapter": "第二章",
-    "author": "King Cobra",
     "readTime": "15 min",
     "content": "content/langchain/chapter-2/03-agent-intro.md"
   },
@@ -52,10 +60,12 @@
     "title": "第1节. Runtime (Agent内部状态)",
     "excerpt": "理解LangChain的Runtime机制：State（短期记忆）、Store（长期记忆）、Context（运行上下文）。",
     "date": "2026-06-10",
-    "tags": ["LangChain", "Agent"],
+    "tags": [
+      "LangChain",
+      "Agent"
+    ],
     "category": "langchain",
     "chapter": "第三章",
-    "author": "King Cobra",
     "readTime": "10 min",
     "content": "content/langchain/chapter-3/01-runtime.md"
   },
@@ -64,10 +74,12 @@
     "title": "第2节. Middleware (中间件)",
     "excerpt": "学习LangChain的中间件机制：预定义中间件、自定义中间件、高级用法。",
     "date": "2026-06-10",
-    "tags": ["LangChain", "Agent"],
+    "tags": [
+      "LangChain",
+      "Agent"
+    ],
     "category": "langchain",
     "chapter": "第三章",
-    "author": "King Cobra",
     "readTime": "12 min",
     "content": "content/langchain/chapter-3/02-middleware.md"
   },
@@ -76,10 +88,12 @@
     "title": "第3节. EmailAgent案例",
     "excerpt": "利用Runtime和Middleware知识实现一个完整的Email Agent，支持鉴权、邮件操作和人工确认。",
     "date": "2026-06-10",
-    "tags": ["Agent", "实战"],
+    "tags": [
+      "Agent",
+      "实战"
+    ],
     "category": "langchain",
     "chapter": "第三章",
-    "author": "King Cobra",
     "readTime": "15 min",
     "content": "content/langchain/chapter-3/03-email-agent.md"
   },
@@ -88,10 +102,12 @@
     "title": "第1节. 构建知识库",
     "excerpt": "RAG核心应用场景：加载文档、切分文本、向量化、存入向量库的完整知识库构建流程。",
     "date": "2026-06-10",
-    "tags": ["RAG", "LangChain"],
+    "tags": [
+      "RAG",
+      "LangChain"
+    ],
     "category": "langchain",
     "chapter": "第四章",
-    "author": "King Cobra",
     "readTime": "12 min",
     "content": "content/langchain/chapter-4/01-build-knowledge-base.md"
   },
@@ -100,10 +116,12 @@
     "title": "第2节. RAG Agent",
     "excerpt": "将检索与生成结合，学习RAG常见架构和知识检索优化策略。",
     "date": "2026-06-10",
-    "tags": ["RAG", "Agent"],
+    "tags": [
+      "RAG",
+      "Agent"
+    ],
     "category": "langchain",
     "chapter": "第四章",
-    "author": "King Cobra",
     "readTime": "14 min",
     "content": "content/langchain/chapter-4/02-rag-agent.md"
   },
@@ -112,10 +130,12 @@
     "title": "2026 年 AI 编码的渐进式 Spec 实战指南",
     "excerpt": "阿里开发者分享AI编码实践：Spec Coding、渐进式复杂度、知识飞轮等核心方法论。",
     "date": "2026-06-10",
-    "tags": ["AI Coding", "VibeCoding"],
+    "tags": [
+      "AI Coding",
+      "VibeCoding"
+    ],
     "category": "vibecoding",
     "chapter": "",
-    "author": "King Cobra",
     "readTime": "10 min",
     "content": "content/vibecoding/01-progressive-spec-guide.md"
   },
@@ -124,10 +144,13 @@
     "title": "AI写代码总走捷径？agent-skills 的工程化实践",
     "excerpt": "Addy Osmani开源的agent-skills项目：把高级工程师的思考框架封装成AI可调用的技能包，覆盖需求澄清到上线发布的完整工程流程。",
     "date": "2026-06-12",
-    "tags": ["AI Coding", "VibeCoding", "工程化"],
+    "tags": [
+      "AI Coding",
+      "VibeCoding",
+      "工程化"
+    ],
     "category": "vibecoding",
     "chapter": "",
-    "author": "King Cobra",
     "readTime": "8 min",
     "content": "content/vibecoding/02-agent-skills-engineering.md"
   },
@@ -136,10 +159,13 @@
     "title": "Loop Engineering 深度解析：AI 编程的第三次革命",
     "excerpt": "从Prompt到Loop：AI编程的第三次范式转变。详解Loop Engineering的四层架构、六大核心要素，以及自动修复CI失败的完整实战案例。",
     "date": "2026-06-12",
-    "tags": ["AI Coding", "VibeCoding", "工程化"],
+    "tags": [
+      "AI Coding",
+      "VibeCoding",
+      "工程化"
+    ],
     "category": "vibecoding",
     "chapter": "",
-    "author": "King Cobra",
     "readTime": "15 min",
     "content": "content/vibecoding/03-loop-engineering.md"
   },
@@ -148,10 +174,11 @@
     "title": "AI 每日速递 | 2026-06-11",
     "excerpt": "Anthropic发布Windows版Claude Cowork+YOLO模式，OpenAI更新Responses API，阶跃星辰Step 3.7 Flash登顶榜单，微信开放AI智能体平台",
     "date": "2026-06-11",
-    "tags": ["AI新闻"],
+    "tags": [
+      "AI新闻"
+    ],
     "category": "dailynews",
     "chapter": "",
-    "author": "King Cobra",
     "readTime": "5 min",
     "content": "content/dailynews/2026-06-11-ai-news.md"
   },
@@ -160,10 +187,11 @@
     "title": "AI 每日速递 | 2026-06-12",
     "excerpt": "OpenAI更新Responses API原生支持Agent任务，Anthropic发布Windows版Claude Cowork+YOLO模式，华为云发布Agentic Infra新范式",
     "date": "2026-06-12",
-    "tags": ["AI新闻"],
+    "tags": [
+      "AI新闻"
+    ],
     "category": "dailynews",
     "chapter": "",
-    "author": "King Cobra",
     "readTime": "5 min",
     "content": "content/dailynews/2026-06-12-ai-news.md"
   },
@@ -172,10 +200,11 @@
     "title": "AI 每日速递 | 2026-06-13",
     "excerpt": "OpenAI革新Codex速率限制，月之暗面开源Kimi K2.7 Code，国内大厂AI高考志愿Agent全面开战",
     "date": "2026-06-13",
-    "tags": ["AI新闻"],
+    "tags": [
+      "AI新闻"
+    ],
     "category": "dailynews",
     "chapter": "",
-    "author": "King Cobra",
     "readTime": "5 min",
     "content": "content/dailynews/2026-06-13-ai-news.md"
   },
@@ -184,23 +213,40 @@
     "title": "AI 每日速递 | 2026-06-14",
     "excerpt": "Anthropic 全球停用 Claude Opus 5，月之暗面发布 Kimi K2.7 Code，智谱 GLM-5.2 下周上线",
     "date": "2026-06-14",
-    "tags": ["AI新闻"],
+    "tags": [
+      "AI新闻"
+    ],
     "category": "dailynews",
     "chapter": "",
-    "author": "King Cobra",
     "readTime": "5 min",
-      "content": "content/dailynews/2026-06-14-ai-news.md"
+    "content": "content/dailynews/2026-06-14-ai-news.md"
   },
   {
     "id": "news-5",
     "title": "AI 每日速递 | 2026-06-15",
     "excerpt": "智谱AI发布GLM-5.2百万上下文开源模型，Anthropic Mythos 5风波持续发酵，OpenAI遭多州调查，美团开源三连发",
     "date": "2026-06-15",
-    "tags": ["AI新闻"],
+    "tags": [
+      "AI新闻"
+    ],
     "category": "dailynews",
     "chapter": "",
-    "author": "King Cobra",
     "readTime": "5 min",
     "content": "content/dailynews/2026-06-15-ai-news.md"
+  },
+  {
+    "id": "vibe-4",
+    "title": "Agent Skills 架构三部曲：从原理到企业级落地",
+    "summary": "通过一场真实技术面试，拆解 AI Agent Skills 架构的核心设计：渐进式披露三层架构、多 Skill 并发上下文控制、企业级 Skill 市场安全管控。",
+    "tags": [
+      "AI Coding",
+      "VibeCoding",
+      "工程化"
+    ],
+    "category": "vibecoding",
+    "chapter": "",
+    "readTime": "12 min",
+    "date": "2026-06-15",
+    "content": "content/vibecoding/04-agent-skills-architecture.md"
   }
 ]

@@ -144,7 +144,7 @@ async function renderPost(id) {
     <article class="mb-12">
       <div class="flex flex-wrap items-center gap-3 mb-4 text-xs font-mono text-muted">
         <span class="px-2 py-0.5 bg-purple-500/10 text-purple-400 rounded">${post.chapter || ''}</span>
-        <span>${post.date}</span><span class="text-border">|</span><span>${post.readTime}</span><span class="text-border">|</span><span>${post.author}</span>
+        <span>${post.date}</span><span class="text-border">|</span><span>${post.readTime}</span><span class="text-border">|</span><span>${CONFIG.author}</span>
       </div>
       <h1 class="text-3xl md:text-4xl font-bold mb-6 tracking-tight leading-tight">${escapeHtml(post.title)}</h1>
       <div class="flex flex-wrap gap-2 mb-6">
@@ -156,6 +156,10 @@ async function renderPost(id) {
     <section class="prose text-text leading-relaxed space-y-6 mb-12" style="line-height: 1.8;">
       ${content}
     </section>
+    ${post.category === 'dailynews' ? `
+    <div class="mt-8 mb-12 text-right">
+      <blockquote class="inline-block text-muted italic border-none p-0 m-0 text-sm" style="border-left: none;">—— ${CONFIG.author}</blockquote>
+    </div>` : ''}
   `;
 }
 
@@ -164,7 +168,7 @@ function renderAbout() {
     <section class="mb-12">
       <div class="text-center mb-10">
         <div class="w-24 h-24 mx-auto mb-6 overflow-hidden rounded-2xl shadow-2xl animate-float">
-          <img src="images/avatar/avatar.jpg" alt="King Cobra 头像" class="w-full h-full object-cover" loading="lazy">
+          <img src="images/avatar/avatar.jpg" alt="${CONFIG.author} 头像" class="w-full h-full object-cover" loading="lazy">
         </div>
         <h1 class="text-3xl md:text-4xl font-bold mb-3 tracking-tight">Hi, I'm <span class="text-gradient">${CONFIG.author}</span></h1>
         <p class="text-lg text-muted max-w-xl mx-auto leading-relaxed">后端架构 · AI Agent · 终身学习者</p>

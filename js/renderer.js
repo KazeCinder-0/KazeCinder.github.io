@@ -151,15 +151,16 @@ async function renderPost(id) {
         ${post.tags.map(t => `<button class="px-3 py-1 rounded-full text-xs font-medium font-mono border border-border text-muted hover:tag-hover transition-all duration-300 cursor-pointer" onclick="window.location.hash='#/tag/${t}'">#${escapeHtml(t)}</button>`).join('')}
       </div>
       <div class="border-t border-border"></div>
+      ${post.category === 'vibecoding' ? `
+      <div class="mt-4 space-y-1 text-sm text-muted">
+        <p><strong>作者</strong>：${CONFIG.author}</p>
+        <p><strong>发布时间</strong>：${post.date ? post.date.replace(/-\d+$/, '年') + '月' : ''}</p>
+      </div>` : ''}
     </article>
 
     <section class="prose text-text leading-relaxed space-y-6 mb-12" style="line-height: 1.8;">
       ${content}
     </section>
-    ${post.category === 'dailynews' ? `
-    <div class="mt-8 mb-12 text-right">
-      <blockquote class="inline-block text-muted italic border-none p-0 m-0 text-sm" style="border-left: none;">—— ${CONFIG.author}</blockquote>
-    </div>` : ''}
   `;
 }
 

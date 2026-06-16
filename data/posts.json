@@ -250,5 +250,16 @@
     "date": "2026-06-15",
     "showMeta": true,
     "content": "content/vibecoding/04-agent-skills-architecture.md"
+  },
+  {
+    "id": "news-6",
+    "title": "AI 每日速递 | 2026-06-16",
+    "excerpt": "G7峰会AI领袖齐聚法国，Anthropic启用实名制刷脸，OpenAI员工套现950亿遭多州调查，Kimi K2.7 Code发布，华为SpaceMind登顶空间智能榜",
+    "date": "2026-06-16",
+    "tags": ["AI新闻"],
+    "category": "dailynews",
+    "chapter": "",
+    "readTime": "5 min",
+    "content": "content/dailynews/2026-06-16-ai-news.md"
   }
 ]

@@ -252,6 +252,22 @@
     "content": "content/vibecoding/04-agent-skills-architecture.md"
   },
   {
+    "id": "vibe-5",
+    "title": "MCP 是什么？30分钟让你的 Agent 能读文件、查数据、调用一切",
+    "excerpt": "MCP（Model Context Protocol）是一套让 AI Agent 能统一连接一切工具的标准协议。本文用通俗类比 + 实操步骤，带你 30 分钟给 Agent 装上「超能力」。",
+    "date": "2026-06-17",
+    "tags": [
+      "Agent",
+      "MCP",
+      "VibeCoding",
+      "工程化"
+    ],
+    "category": "vibecoding",
+    "chapter": "",
+    "readTime": "8 min",
+    "content": "content/vibecoding/05-mcp-model-context-protocol.md"
+  },
+  {
     "id": "news-6",
     "title": "AI 每日速递 | 2026-06-16",
     "excerpt": "G7峰会AI领袖齐聚法国，Anthropic启用实名制刷脸，OpenAI员工套现950亿遭多州调查，Kimi K2.7 Code发布，华为SpaceMind登顶空间智能榜",

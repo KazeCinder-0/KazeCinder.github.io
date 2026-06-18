@@ -304,5 +304,16 @@
     "chapter": "",
     "readTime": "5 min",
     "content": "content/dailynews/2026-06-17-ai-news.md"
+  },
+  {
+    "id": "news-8",
+    "title": "AI 每日速递 | 2026-06-18",
+    "excerpt": "G7峰会AI三巨头同台全球治理进入权力博弈新阶段，ChatGPT市场份额首次跌破50%，谷歌Gemma 4上线Bedrock",
+    "date": "2026-06-18",
+    "tags": ["AI新闻"],
+    "category": "dailynews",
+    "chapter": "",
+    "readTime": "5 min",
+    "content": "content/dailynews/2026-06-18-ai-news.md"
   }
 ]

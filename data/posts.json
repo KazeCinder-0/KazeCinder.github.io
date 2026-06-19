@@ -314,6 +314,17 @@
     "category": "dailynews",
     "chapter": "",
     "readTime": "5 min",
-    "content": "content/dailynews/2026-06-18-ai-news.md"
+      "content": "content/dailynews/2026-06-18-ai-news.md"
+  },
+  {
+    "id": "news-9",
+    "title": "AI 每日速递 | 2026-06-19",
+    "excerpt": "Transformer联合作者加入OpenAI，Midjourney跨界医疗，Google Flow上线，MiniMax开源M1推理模型",
+    "date": "2026-06-19",
+    "tags": ["AI新闻"],
+    "category": "dailynews",
+    "chapter": "",
+    "readTime": "5 min",
+    "content": "content/dailynews/2026-06-19-ai-news.md"
   }
 ]

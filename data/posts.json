@@ -288,7 +288,9 @@
     "title": "AI 每日速递 | 2026-06-16",
     "excerpt": "G7峰会AI领袖齐聚法国，Anthropic启用实名制刷脸，OpenAI员工套现950亿遭多州调查，Kimi K2.7 Code发布，华为SpaceMind登顶空间智能榜",
     "date": "2026-06-16",
-    "tags": ["AI新闻"],
+    "tags": [
+      "AI新闻"
+    ],
     "category": "dailynews",
     "chapter": "",
     "readTime": "5 min",
@@ -299,7 +301,9 @@
     "title": "AI 每日速递 | 2026-06-17",
     "excerpt": "G7峰会AI三巨头同台，阿里Qwen-Robot具身大模型发布，MiniMax M3接入支付宝Token Pay，全球AI调用量连续八周上涨",
     "date": "2026-06-17",
-    "tags": ["AI新闻"],
+    "tags": [
+      "AI新闻"
+    ],
     "category": "dailynews",
     "chapter": "",
     "readTime": "5 min",
@@ -310,21 +314,44 @@
     "title": "AI 每日速递 | 2026-06-18",
     "excerpt": "G7峰会AI三巨头同台全球治理进入权力博弈新阶段，ChatGPT市场份额首次跌破50%，谷歌Gemma 4上线Bedrock",
     "date": "2026-06-18",
-    "tags": ["AI新闻"],
+    "tags": [
+      "AI新闻"
+    ],
     "category": "dailynews",
     "chapter": "",
     "readTime": "5 min",
-      "content": "content/dailynews/2026-06-18-ai-news.md"
+    "content": "content/dailynews/2026-06-18-ai-news.md"
   },
   {
     "id": "news-9",
     "title": "AI 每日速递 | 2026-06-19",
     "excerpt": "Transformer联合作者加入OpenAI，Midjourney跨界医疗，Google Flow上线，MiniMax开源M1推理模型",
     "date": "2026-06-19",
-    "tags": ["AI新闻"],
+    "tags": [
+      "AI新闻"
+    ],
     "category": "dailynews",
     "chapter": "",
     "readTime": "5 min",
     "content": "content/dailynews/2026-06-19-ai-news.md"
+  },
+  {
+    "id": "news-10",
+    "title": "AI 每日速递 | 2026-06-20",
+    "excerpt": "OpenAI招募Noam Shazeer和Dean Ball，DeepSeek完成500亿美元估值融资，G7 AI治理激辩，智谱GLM-5.2开源发布",
+    "date": "2026-06-20",
+    "tags": [
+      "AI新闻",
+      "OpenAI",
+      "DeepSeek",
+      "G7",
+      "智谱AI",
+      "Google"
+    ],
+    "category": "dailynews",
+    "chapter": "",
+    "author": "King Cobra",
+    "readTime": "5 min",
+    "content": "content/dailynews/2026-06-20-ai-news.md"
   }
 ]

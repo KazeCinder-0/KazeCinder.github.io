@@ -353,5 +353,24 @@
     "author": "King Cobra",
     "readTime": "5 min",
     "content": "content/dailynews/2026-06-20-ai-news.md"
+  },
+  {
+    "id": "news-11",
+    "title": "AI 每日速递 | 2026-06-21",
+    "excerpt": "诺奖得主John Jumper加入Anthropic，Claude Code史诗级更新，Amazon Trainium挑战Nvidia，快手开源GoLongRL",
+    "date": "2026-06-21",
+    "tags": [
+      "AI新闻",
+      "Anthropic",
+      "Google",
+      "Amazon",
+      "快手",
+      "华为"
+    ],
+    "category": "dailynews",
+    "chapter": "",
+    "author": "King Cobra",
+    "readTime": "5 min",
+    "content": "content/dailynews/2026-06-21-ai-news.md"
   }
 ]

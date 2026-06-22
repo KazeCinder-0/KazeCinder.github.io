@@ -372,5 +372,17 @@
     "author": "King Cobra",
     "readTime": "5 min",
     "content": "content/dailynews/2026-06-21-ai-news.md"
+  },
+  {
+    "id": "news-12",
+    "title": "AI 每日速递 | 2026-06-22",
+    "excerpt": "Google DeepMind痛失两员大将加盟竞对，OpenAI GPT-5.6下周发布，微信小微灰度测试，字节SpatialTree入选CVPR",
+    "date": "2026-06-22",
+    "tags": ["AI新闻", "OpenAI", "Anthropic", "Google", "字节跳动", "腾讯"],
+    "category": "dailynews",
+    "chapter": "",
+    "author": "King Cobra",
+    "readTime": "5 min",
+    "content": "content/dailynews/2026-06-22-ai-news.md"
   }
 ]

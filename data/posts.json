@@ -388,13 +388,13 @@
   {
     "id": "news-13",
     "title": "AI 每日速递 | 2026-06-23",
-    "excerpt": "智谱GLM-5.2开源引发硅谷热议，GPT-5.5 Instant健康问答错误率暴降71%，Claude Opus 4.7自主操控机器狗，Getty与OpenAI达成展示协议",
+    "excerpt": "智谱GLM-5.2开源引发硅谷热议，英伟达发布Halos机器人安全系统，GPT-5.6月底上线，微软Copilot接入DeepSeek，微信小微灰度测试",
     "date": "2026-06-23",
-    "tags": ["AI新闻", "智谱AI", "OpenAI", "Anthropic", "开源模型"],
+    "tags": ["AI新闻", "智谱AI", "OpenAI", "英伟达", "微软", "腾讯", "阿里巴巴", "Anthropic"],
     "category": "dailynews",
     "chapter": "",
     "author": "King Cobra",
-    "readTime": "5 min",
+    "readTime": "8 min",
     "content": "content/dailynews/2026-06-23-ai-news.md"
   }
 ]

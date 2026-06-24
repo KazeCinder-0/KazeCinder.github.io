@@ -396,5 +396,17 @@
     "author": "King Cobra",
     "readTime": "8 min",
     "content": "content/dailynews/2026-06-23-ai-news.md"
+  },
+  {
+    "id": "news-14",
+    "title": "AI 每日速递 | 2026-06-24",
+    "excerpt": "全球AI股暴跌触发熔断，字节豆包2.1 Pro发布Token调用量180万亿，英特尔CEO预言CPU重回AI牌桌，五眼联盟警告西方AI优势仅剩数月",
+    "date": "2026-06-24",
+    "tags": ["AI新闻", "OpenAI", "Anthropic", "字节跳动", "英特尔", "英伟达", "华为", "智谱AI"],
+    "category": "dailynews",
+    "chapter": "",
+    "author": "King Cobra",
+    "readTime": "8 min",
+    "content": "content/dailynews/2026-06-24-ai-news.md"
   }
 ]

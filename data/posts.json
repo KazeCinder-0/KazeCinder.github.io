@@ -408,5 +408,17 @@
     "author": "King Cobra",
     "readTime": "8 min",
     "content": "content/dailynews/2026-06-24-ai-news.md"
+  },
+  {
+    "id": "news-15",
+    "title": "AI 每日速递 | 2026-06-26",
+    "excerpt": "OpenAI发布首款自研AI芯片Jalapeño，百度文心网站整合升级，MIT推出Murakkab系统降低AI Agent能耗73%，人大与微软发布Arbor自主科研框架",
+    "date": "2026-06-26",
+    "tags": ["AI新闻", "OpenAI", "百度", "MIT", "Anthropic", "DeepMind"],
+    "category": "dailynews",
+    "chapter": "",
+    "author": "King Cobra",
+    "readTime": "8 min",
+    "content": "content/dailynews/2026-06-26-ai-news.md"
   }
 ]

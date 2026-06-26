@@ -268,6 +268,22 @@
     "content": "content/vibecoding/05-mcp-model-context-protocol.md"
   },
   {
+    "id": "vibe-8",
+    "title": "RAG 完全指南：16 种 RAG 方案一次讲清",
+    "excerpt": "从 Naive RAG 到 Agentic RAG，16 种方案系统梳理：语义分块、混合检索、精排、CRAG、GraphRAG、多模态 RAG……一文讲清每种方案解决什么问题、怎么用。",
+    "date": "2026-06-26",
+    "tags": [
+      "RAG",
+      "AI Coding",
+      "VibeCoding",
+      "工程化"
+    ],
+    "category": "vibecoding",
+    "chapter": "",
+    "readTime": "10 min",
+    "content": "content/vibecoding/08-rag-16-methods.md"
+  },
+  {
     "id": "vibe-7",
     "title": "CLAUDE.md 完全指南：给 AI 写一份会自动加载的入职手册",
     "excerpt": "AI 总是不听话？根源在于没给它足够的上下文。本文系统讲解 CLAUDE.md 的 8 个核心技巧：控制行数、正面指令、渐进式披露、Hooks 强制执行……让 AI 每次启动就自动了解你的项目。",

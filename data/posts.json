@@ -420,5 +420,17 @@
     "author": "King Cobra",
     "readTime": "8 min",
     "content": "content/dailynews/2026-06-26-ai-news.md"
+  },
+  {
+    "id": "news-16",
+    "title": "AI 每日速递 | 2026-06-26",
+    "excerpt": "OpenAI首款自研AI芯片Jalapeño发布，Google DeepMind将Computer Use集成到Gemini 3.5 Flash，字节豆包专业版上线，百度文心升级，华为昇腾950DT提前至8月上线",
+    "date": "2026-06-26",
+    "tags": ["AI新闻", "OpenAI", "Google", "字节跳动", "百度", "华为", "Anthropic", "NVIDIA"],
+    "category": "dailynews",
+    "chapter": "",
+    "author": "King Cobra",
+    "readTime": "8 min",
+    "content": "content/dailynews/2026-06-26-ai-news.md"
   }
 ]

@@ -1,6 +1,6 @@
 ---
 title: "RAG 完全指南：16 种 RAG 方案一次讲清"
-category: "vibecoding"
+category: "ai-engineering"
 date: "2026-06-26"
 ---
 

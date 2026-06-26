@@ -268,17 +268,16 @@
     "content": "content/vibecoding/05-mcp-model-context-protocol.md"
   },
   {
-    "id": "vibe-8",
+    "id": "ae-1",
     "title": "RAG 完全指南：16 种 RAG 方案一次讲清",
     "excerpt": "从 Naive RAG 到 Agentic RAG，16 种方案系统梳理：语义分块、混合检索、精排、CRAG、GraphRAG、多模态 RAG……一文讲清每种方案解决什么问题、怎么用。",
     "date": "2026-06-26",
     "tags": [
       "RAG",
-      "AI Coding",
-      "VibeCoding",
-      "工程化"
+      "AI 工程",
+      "Agent"
     ],
-    "category": "vibecoding",
+    "category": "ai-engineering",
     "chapter": "",
     "readTime": "10 min",
     "content": "content/vibecoding/08-rag-16-methods.md"

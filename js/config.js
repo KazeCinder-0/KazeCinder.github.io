@@ -4,6 +4,7 @@ const CONFIG = {
   categoryLabels: {
     langchain: 'LangChain',
     vibecoding: 'VibeCoding',
+    'ai-engineering': 'AI 工程',
     dailynews: '每日新闻'
   },
 

@@ -463,5 +463,17 @@
     "author": "King Cobra",
     "readTime": "8 min",
     "content": "content/dailynews/2026-06-26-ai-news.md"
+  },
+  {
+    "id": "news-17",
+    "title": "AI 每日速递 | 2026-06-29",
+    "excerpt": "TechCrunch：OpenAI vs Anthropic叙事已过时，两家共陷监管困境；Anthropic AI for Science发布会周一登场；Reid Hoffman炮轰xAI是彻底训练事故；高盛：AI每月消除1.1万美国工作岗位",
+    "date": "2026-06-29",
+    "tags": ["AI新闻", "OpenAI", "Anthropic", "Google", "字节跳动", "阿里巴巴", "百度"],
+    "category": "dailynews",
+    "chapter": "",
+    "author": "King Cobra",
+    "readTime": "8 min",
+    "content": "content/dailynews/2026-06-29-ai-news.md"
   }
 ]

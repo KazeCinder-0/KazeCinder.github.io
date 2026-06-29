@@ -8,7 +8,7 @@
       "LangChain",
       "Agent"
     ],
-    "category": "langchain",
+    "category": "ai-engineering",
     "chapter": "第一章",
     "readTime": "8 min",
     "content": "content/langchain/chapter-1/01-ai-compass.md"
@@ -22,7 +22,7 @@
       "LangGraph",
       "Agent"
     ],
-    "category": "langchain",
+    "category": "ai-engineering",
     "chapter": "第一章",
     "readTime": "12 min",
     "content": "content/langchain/chapter-1/02-basic-concepts.md"
@@ -36,7 +36,7 @@
       "LangChain",
       "Agent"
     ],
-    "category": "langchain",
+    "category": "ai-engineering",
     "chapter": "第二章",
     "readTime": "6 min",
     "content": "content/langchain/chapter-2/01-core-components.md"
@@ -50,7 +50,7 @@
       "Agent",
       "实战"
     ],
-    "category": "langchain",
+    "category": "ai-engineering",
     "chapter": "第二章",
     "readTime": "15 min",
     "content": "content/langchain/chapter-2/03-agent-intro.md"
@@ -64,7 +64,7 @@
       "LangChain",
       "Agent"
     ],
-    "category": "langchain",
+    "category": "ai-engineering",
     "chapter": "第三章",
     "readTime": "10 min",
     "content": "content/langchain/chapter-3/01-runtime.md"
@@ -78,7 +78,7 @@
       "LangChain",
       "Agent"
     ],
-    "category": "langchain",
+    "category": "ai-engineering",
     "chapter": "第三章",
     "readTime": "12 min",
     "content": "content/langchain/chapter-3/02-middleware.md"
@@ -92,7 +92,7 @@
       "Agent",
       "实战"
     ],
-    "category": "langchain",
+    "category": "ai-engineering",
     "chapter": "第三章",
     "readTime": "15 min",
     "content": "content/langchain/chapter-3/03-email-agent.md"
@@ -106,7 +106,7 @@
       "RAG",
       "LangChain"
     ],
-    "category": "langchain",
+    "category": "ai-engineering",
     "chapter": "第四章",
     "readTime": "12 min",
     "content": "content/langchain/chapter-4/01-build-knowledge-base.md"
@@ -120,7 +120,7 @@
       "RAG",
       "Agent"
     ],
-    "category": "langchain",
+    "category": "ai-engineering",
     "chapter": "第四章",
     "readTime": "14 min",
     "content": "content/langchain/chapter-4/02-rag-agent.md"
@@ -274,8 +274,8 @@
     "date": "2026-06-26",
     "tags": [
       "RAG",
-      "AI 工程",
-      "Agent"
+      "AI Coding",
+      "工程化"
     ],
     "category": "ai-engineering",
     "chapter": "",

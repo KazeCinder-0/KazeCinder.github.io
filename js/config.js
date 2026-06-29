@@ -2,7 +2,6 @@
 const CONFIG = {
   // 分类标签映射
   categoryLabels: {
-    langchain: 'LangChain',
     vibecoding: 'VibeCoding',
     'ai-engineering': 'AI 工程',
     dailynews: '每日新闻'
